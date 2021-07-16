@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from near.sh/articles/emulation/edge-of-emulation by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 16 Jul 2021 04:41:41 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Edge of Emulation &mdash; Near's Respite</title>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='robots' content='noarchive'>
+<style>
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  margin: 0em;
+  outline: none;
+  padding: 0em;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  background: #222;
+  color: #eee;
+  font-family: "Verdana", sans-serif;
+  font-size: 9.5pt;
+  line-height: 1.35;
+  word-wrap: break-word;
+}
+
+a {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+header {
+  background: url("../../images/prism.png");
+  border-bottom: 1px solid #000;
+  padding: 8px 8px 4px 8px;
+}
+
+body > nav {
+  background: #444;
+  border-bottom: 1px solid #000;
+}
+
+body > nav a {
+  color: #eee;
+  display: inline-block;
+  font-size: 0.95em;
+  padding: 0.4em 0.8em;
+}
+
+body > nav a:hover {
+  background: #666;
+}
+
+main {
+  padding: 0.8em;
+}
+
+main a {
+  color: #88e;
+}
+
+main a:hover {
+  color: #bbe;
+}
+
+main figcaption {
+  color: #ddd;
+  font-size: 8pt;
+  font-style: italic;
+  margin-bottom: 0.5em;
+}
+
+main h2 {
+  border-bottom: 1px solid #555;
+  margin-bottom: 0.25em;
+  margin-top: 0.5em;
+}
+
+main h2 span {
+  font-family: "Georgia";
+  font-size: 11pt;
+  float: right;
+  margin-top: 0.4em;
+}
+
+main img {
+  height: auto;
+  max-height: 100vh;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+main img.crisp {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  image-rendering: -moz-crisp-edges;
+}
+
+main ol {
+  font-size: 9.5pt;
+  margin-top: -0.3em;
+}
+
+main ol li {
+  display: inline;
+}
+
+main ol li:after {
+  content: " » ";
+  font-weight: bold;
+}
+
+main ol li:last-child:after {
+  content: "";
+}
+
+main p {
+  margin-bottom: 0.6em;
+  max-width: 72em;
+}
+
+main p:last-child {
+  margin-bottom: 0em;
+}
+
+main ul {
+  list-style: none;
+  margin-bottom: 0.8em;
+}
+
+main ul > ul {
+  margin-left: 1em;
+  margin-bottom: 0em;
+}
+
+main ul li:before {
+  content: "• ";
+}
+
+main table {
+  border: 1px solid #000;
+  border-collapse: collapse;
+  margin-bottom: 0.8em;
+}
+
+main table tr:nth-child(even) {
+  background: #222222;
+}
+
+main table tr:nth-child(odd) {
+  background: #2c2c2c;
+}
+
+main table tr th {
+  background: #433;
+  padding: 0.5em;
+  text-align: left;
+}
+
+main table tr td {
+  padding: 0.5em;
+}
+
+main pre:not([class]) {
+  background: #223;
+  border: 1px solid #888;
+  margin: 0.5em;
+  padding: 0.5em;
+}
+
+main pre.source-line {
+  background: #111;
+  float: left;
+  padding: 0em 0.25em;
+  text-align: right;
+}
+
+main pre.source-code {
+  background: #333;
+  margin-bottom: 0.8em;
+  overflow: auto;
+  padding-left: 0.5em;
+}
+
+main pre.binary {
+  background: #333;
+  margin-bottom: 0.5em;
+  overflow: auto;
+  padding: 0.2em 0.5em;
+}
+
+main div.gallery img {
+  background: #fff;
+  margin-bottom: 0.5em;
+  margin-right: 0.5em;
+}
+
+main input {
+  margin-bottom: 0.5em;
+  vertical-align: middle;
+}
+
+main input[type="text"], input[type="submit"], main label, select {
+  background: #333;
+  border: 1px solid #888;
+  color: #fff;
+  padding: 0.4em;
+}
+
+main label, select {
+  display: inline-block;
+  margin-bottom: 0.5em;
+}
+
+main input[type="text"] {
+  width: 100%;
+}
+
+main input[type="file"] {
+  display: none;
+}
+
+main input[type="submit"], main label {
+  background: #555;
+  font-weight: bold;
+}
+
+main textarea {
+  background: #333;
+  border: 1px solid #888;
+  color: #fff;
+  height: 20em;
+  padding: 0.4em;
+  margin-bottom: 0.5em;
+  width: 100%;
+}
+
+main .post {
+  background: #333;
+  border: 1px solid #888;
+  border-radius: 8px;
+  padding: 0.5em;
+  margin-top: 1em;
+  max-width: 72em;
+  overflow: auto;
+}
+
+footer {
+  padding: 0em 0.8em;
+}
+
+footer p {
+  border-top: 1px solid #555;
+  color: #aaa;
+  font-size: 8pt;
+  padding-bottom: 0.5em;
+  padding-top: 0.3em;
+}
+</style>
+</head>
+<body>
+<header>
+   <a href='../../index.html'><img src='../../images/logo.png' alt='' width='232' height='42'></a>
+</header>
+<nav>
+   <a href='../../articles.html'>Articles</a><!--
+--><a href='../../bahamut-lagoon.html'>Bahamut&nbsp;Lagoon</a>
+</nav>
+<main>
+<ol><li><a href='../../index.html'><span>near.sh</span></a></li><li><a href='../../articles.html'><span>articles</span></a></li><li><a href='../emulation.html'><span>emulation</span></a></li><li><a href='edge-of-emulation.html'><span>edge-of-emulation</span></a></li></ol>
+<h2 id="edge-of-emulation">Edge of Emulation<span>2020-01-21</span></h2>
+<p>SNES emulation has come a long way from its inception in the 1990s.</p>
+<p>These days, I am able to keep my bug tracker free of game-related issues
+approximately 95% of the time, and new issues are usually very minor and quickly
+resolved.</p>
+<p>We are in a good place with our emulation of nearly all SNES components, with
+the sole exception of the SNES PPUs, or video processors. When it comes to
+scanline timing, we have more than perfected that, but when it comes to the
+individual pixel timings, needed for raster effect accuracy, it is the one weak
+area left in SNES emulation.</p>
+<p>In practice, I can only name one game (Air Strike Patrol) that intentionally
+relied on SNES raster (mid-scanline) effects, so the importance of this is easy
+to downplay, however for the sake of completion it represents the final frontier
+of SNES emulation research.</p>
+<h2 id="background">Background</h2>
+<p>When I first entered the SNES emulation scene in 2004, things were in bad
+shape: aside from high-level emulation of SNES coprocessors, no substantial core
+progress had been made since around 1999 or so.</p>
+<p>Emulators back then worked on a principle I like to call whack-a-mole emulation:
+whenever a game wasn't functioning, a fix would be devised that would seemingly
+make that specific game work, but the fixes weren't being verified as accurate
+to real hardware. Over time, the fixes would turn out to be wrong and break
+other games. Fixes for those games would break yet more games. And then fixes
+for those would break the original game that started this cycle. Rinse, repeat.</p>
+<p>The thing I knew we needed from day one was to not prioritize fixing specific
+games, but rather to understand how the actual hardware operated, and to
+implement <em>correct</em>, hardware-verified fixes.</p>
+<p>The key insight that made this possible was me devising library code that could
+seek to exact cycle positions within each emulated video frame, execute code of
+my choosing, and then analyze the results. By making loops over ranges of cycle
+positions, it became possible to analyze and determine <strong>exactly</strong> where various
+operations on the SNES occurred.</p>
+<p>This worked amazingly well, and combined with the help of others over the next
+fifteen years, we were able to basically perfect the internal operations of the
+CPU (central processor) and SMP (audio processor) inside the SNES.</p>
+<p>Some time later, a developer by the name of blargg appeared to tackle the SNES
+DSP (audio generator), by taking advantage of cycle-timed SMP code and a key
+feature of the DSP: the echo buffer. The DSP would write all generated audio
+samples into this echo buffer, and from here it was possible to analyze the
+results of audio mixing, allowing us to once again reverse engineer and
+perfectly emulate every internal operation of the SNES DSP.</p>
+<p>After a successful coprocessor decapping project, I was able to emulate all of
+the SNES coprocessors using low-level emulation.</p>
+<p>And finally to cap things off, several important new hardware test ROMs and a
+lot of hard work enabled me to emulate cycle-level timings of the SuperFX
+CPU's instruction and pixel caches, and bus-conflict arbitration stall timings
+of the SA-1 CPU.</p>
+<p>Thousands of additional hours into other coprocessors (decompressors, real-time
+clocks, memory mappers, etc) has led to a state of near-perfect SNES emulation.</p>
+<p>That is, with the one exception of the SNES PPUs.</p>
+<h2 id="snes-ppus">SNES PPUs</h2>
+<p>To generate video, the SNES relies on two PPU (picture processing unit) chips,
+the PPU1 and PPU2.</p>
+<p>Unfortunately, unlike every other processor, these have the critical challenge
+that they act as black boxes to the SNES itself: you cannot analyze the pixels
+it generates, as they are sent directly from the PPU2 out through the analog
+MultiAV connector on the back of the SNES console.</p>
+<p>Where the CPUs had registers, flags, I/O ports and memory to analyze results,
+and the DSP had the echo buffer to analyze audio generation, the PPUs have no
+such functionality.</p>
+<p>The only feedback the PPUs provide are range-tile over flags to inform you if
+there were too many sprites (or sprite tiles) on a scanline during a video
+frame. Put simply, it's not enough information.</p>
+<h2 id="ppu-ram">PPU RAM</h2>
+<p>During active screen rendering, the video RAM of the PPUs is completely
+inaccessible to the SNES CPU: you cannot even read what is being fetched while
+the PPUs access this memory.</p>
+<p>Either due to an oversight or a lack of concern, the object attribute (sprite)
+memory and color generator (palette) memory are accessible, but with an
+interesting twist: the PPUs drive the address bus. By reading and writing to
+OAM and CGRAM during rendering, we can peek slightly at the internal operations
+of the SNES PPUs.</p>
+<h2 id="deductive-reasoning">Deductive Reasoning</h2>
+<p>We were also able to consider the bandwidth limitations of the SNES PPU design:
+how many bytes of video RAM could it access at any given time? What would be the
+smartest pattern to perform these accesses? And so forth.</p>
+<p>This led us to a mostly complete <em>general</em> understanding of the SNES PPUs, and
+with all of the above information combined, I was able to devise (and over the
+years refine) the first cycle-based SNES PPU renderer.</p>
+<p>It's enough to faithfully recreate the raster effects in the one game that uses
+such effects, as well as to handle nearly all officially licensed software that
+accidentally modifies PPU registers during scanline rendering, but it's never
+been perfect: things have always been off by a few cycles, causing raster
+effects to either start or end a few cycles early or late.</p>
+<p>Again, raster effects are so infrequent that you would never notice them. My
+bsnes emulator even defaults to a scanline renderer for most games because it is
+so <em>substantially</em> faster and indistinguishable.</p>
+<p>But when we're talking about perfection, the truth is, even higan's cycle-based
+PPU renderer is not perfect.</p>
+<h2 id="whack-a-mole">Whack-a-Mole</h2>
+<p>Recently, a tester named Max has gone through the entire SNES library looking
+for any and all issues, and indeed, quite a few smaller cycle-based PPU
+rendering issues emerged. Some were more serious than others and an obvious fix
+was available. But some were more stubborn.</p>
+<p>I should add that from 2004 - 2018, I was mostly alone in pursuing cycle-based
+timings of the SNES PPUs. Or at least, the only person publicly working on the
+problem and sharing my notes and source code with everyone.</p>
+<p>As of 2019, a bit of a revival has occurred in the SNES emulation scene, and we
+now have two other open-source SNES emulators under development with a focus on
+accuracy. I really couldn't be happier about this: I've mostly reached my limits
+of what I can do on my own, I'm not going to be around forever, and having more
+people in this space is always a blessing.</p>
+<p>Unfortunately, I feel like this has created some pressure at solving these final
+PPU issues in a quick-and-dirty, unverified approach. In other words, the PPU
+version of whack-a-mole.</p>
+<p>I watched this approach play out fruitlessly for years before I finally stepped
+in to begin working on SNES emulation back in 2004, and I don't want to see it
+happen again with this final piece of SNES emulation.</p>
+<h2 id="problem-scope">Problem Scope</h2>
+<p>We know that there are 52 writable PPU registers, and 12 readable registers. We
+also know there is VRAM, OAM, and CGRAM memory.</p>
+<p>But there are also an unknown number of internal registers that the PPU uses.
+These are generally referred to as latches: during screen rendering, the PPU
+will at various points read these PPU I/O registers, copy (or latch) them
+internally, transform them in various ways, and then use and update the internal
+latched values throughout rendering each scanline.</p>
+<p>We are completely blind to these internal latches. The way we find out about
+them is through debugging games with rendering issues. For instance, Air Strike
+Patrol writes to the BG3 scroll registers mid-scanline to perform a text
+rotation effect on text in the middle of the screen, while not disturbing a HUD
+display on the left on the same background layer, so we know these registers can
+be modified mid-scanline. And then there is an effect in Full Throttle Racing
+that writes to the BG3 horizontal scroll register around cycles 40 - 80 of the
+screen rendering to scroll in some text, which unless we latch the fine-X scroll
+bits (the lower three bits of each tile) prior to the first write, the effect
+does not render correctly.</p>
+<p>Thus, we are able to deduce that the PPU is latching the fine-X scroll registers
+of the background registers sometime before cycle 40 of each scanline. But we
+don't know on exactly which cycle this happens. And so we guess.</p>
+<p>If we latch too late, after cycle 40, Full Throttle Racing will glitch. But if
+we guess a value too soon, say on cycle 0, that might be too early, and it might
+cause issues in another game.</p>
+<p>We would have to retest the entire SNES library to be sure such a change did not
+cause any regressions, which just isn't practical with a library of 3,500+ game
+titles.</p>
+<p>Rather than blindly guess things like this, we need to confirm the exact cycle
+position on real hardware, and do it right the first time.</p>
+<h2 id="algebra">Algebra</h2>
+<p>See, on the surface, it seems pretty easy to simply tweak values to get the
+desired results. Even if not perfect, we'll surely get closer each time to the
+correct answer, right?</p>
+<p>But nothing in the SNES PPU is this trivial, and every effect is influenced by
+other effects.</p>
+<p>Imagine the expression:</p>
+<pre>3x + 7 = 22</pre>
+<p>It's easy to deduce that x is 5 in this case. We could say that x here was the
+BG3 horizontal scroll latch cycle.</p>
+<p>But now let's say you have the expression:</p>
+<pre>2x + y = 120</pre>
+<p>This could be solved if x were 30 and y were 60. But it could also be solved if
+x were 10 and y were 100. Or if x were 20 and y were 80. And so on.</p>
+<p>The SNES PPU's internal state isn't one variable at a time in isolation: it's
+hundreds of variables all operating in unison.</p>
+<p>Imagine a mathematical expression complex enough to generate an entire row of
+256 or 512 pixels, across four background layers with differing modes and
+priority bits, 128 sprites with their own priorities, complex color blending
+modes, two windows that can be combined with boolean algebra, a color window on
+top of that, mosaic effects, offset-per-tile effects, and on and on and on.</p>
+<p>The combination of possible answers that would render a scanline that looks
+correct is basically infinite.</p>
+<p>At this point in SNES emulation, we've come about as far as we can with guessing
+what this equation might look like based on the above observations I've
+mentioned, and thousands of hours of empirical testing, but we will never get
+this perfect using this methodology: it's a lost cause.</p>
+<p>So that's the problem scope, now what can we do about it?</p>
+<h2 id="analog-rgb">Analog RGB</h2>
+<p>The first, and most arduous, approach is to analyze the analog RGB output: we
+write very specific SNES test ROMs that try to write to SNES PPU registers at
+a different cycle on each scanline, and carefully design what should be rendered
+around this time. We see the visual results onscreen, and by trying to exactly
+match the output we see on our CRTs (or XRGB-Mini capture devices), we slowly
+reverse engineer the existence of internal latches and their latch cycle
+positions.</p>
+<p>The major problem with this approach is that it has to be done manually! We have
+to create a very clever test ROM that relies on generating a visually
+significant pattern, and once we've emulated the pattern, we can't quickly
+validate the behavior again.</p>
+<p>The best bet would be to save emulator screenshots, and update our emulators to
+run these test ROMs and compare the video output to cached screenshots in order
+to perform regression testing.</p>
+<p>We will absolutely need regression testing because any future changes are very
+likely to break previously passing tests.</p>
+<p>But even if we do this, we're still relying on the analog video output from the
+SNES, and we can't perfectly match our screenshots to this output, because the
+output is analog and thus imperfect.</p>
+<p>Not being able to do millions of tests iteratively and automatically makes this
+process unbelievably slower to the point that I really don't see it being a
+practical approach.</p>
+<p>Many PPU operations (such as full sprite evaluations) are so complex that we
+could easily need millions of tests to fully understand the behavior, and we
+just aren't going to be able to visually eye the results of millions of test
+runs to check for correctness.</p>
+<h2 id="logic-analyzers">Logic Analyzers</h2>
+<p>I think our best bet is going to be some form of PPU1 and PPU2 pinout
+monitoring. The two PPUs connect to each other and to the rest of the SNES with
+address buses, data buses, and more.</p>
+<p>If we have the ability to snoop those buses during each cycle of operation, we
+can see all of the <em>external</em> timings of the PPUs. And with that, we can suss
+out on which cycles various background tilemaps and tiledata are fetched, when
+exactly sprite fetches occur, etc.</p>
+<p>The easier way to do this is with a logic analyzer, but the problem here is that
+you still have to write the test ROMs, and run each one. So if you need to
+evaluate a million combinations of sprite pattern layouts, you're going to be
+doing a million tests with your logic analyzer.</p>
+<p>It gives us better and more reliable information than looking at fuzzy, analog
+video frames, but it's still not enough.</p>
+<h2 id="custom-circuitboards">Custom Circuitboards</h2>
+<p>If we could recruit a talented electrical engineer, I believe that a custom PPU
+breakout board could be designed that would aid us <strong>substantially</strong> in reverse
+engineering.</p>
+<p>The idea would be to make a board containing the two SNES PPU chips, and the
+two external VRAM chips. The internal OAM and CGRAM would come with the PPU2.</p>
+<p>We would then construct an interface to connect this board to a PC, and allow us
+to write software that would program the VRAM and PPU registers to a certain
+given state, and then run the chips, logging the values on each of the data
+buses during every cycle of operation, feeding the results back to a computer.</p>
+<p>We could then modify our emulators to generate similar logs, and use this as a
+formal validation to create an emulation that is pinout-compatible with the
+original SNES PPUs.</p>
+<p>This still wouldn't directly tell us about the internal register latches, but it
+would be so much available information, that we could programmatically generate
+and test (eg millions of tests as discussed previously), that I think we could
+mostly figure out the internal operation from this.</p>
+<h2 id="decapping">Decapping</h2>
+<p>The final approach I can think of would be for us to acquire high-resolution die
+scans of the two SNES PPU chips, and then formally recreate transistor-perfect
+copies of them in a Verilog / VHDL-like language.</p>
+<p>This would reveal to us all of the internal latches, and truly perfect emulation
+would now be possible: directly on FPGA emulators, and very rapidly in software
+emulators as well.</p>
+<p>We currently have 20x decapped die scans of the PPU chips, courtesy of
+<a href="https://siliconpr0n.org/">John McMaster</a>, but we would need at least a 50x
+die scan (and preferably 100x) in order to trace out its logic.</p>
+<figure class='image'>
+<a href="../../images/articles/emulation/edge-of-emulation/s-ppu1.jpg"><img loading="lazy" src="../../images/articles/emulation/edge-of-emulation/s-ppu1.jpg" alt="S-PPU1 20x die scan" width="600" height="600">
+</a>
+<figcaption>S-PPU1 20x die scan</figcaption>
+</figure>
+<figure class='image'>
+<a href="../../images/articles/emulation/edge-of-emulation/s-ppu2.jpg"><img loading="lazy" src="../../images/articles/emulation/edge-of-emulation/s-ppu2.jpg" alt="S-PPU2 20x die scan" width="600" height="600">
+</a>
+<figcaption>S-PPU2 20x die scan</figcaption>
+</figure>
+<h2 id="call-for-assistance">Call For Assistance</h2>
+<p>The problem is, aside from the deeply flawed analog RGB method (which I simply
+don't have the time for), I can't really do this. And I don't see anyone else
+working in open source emulation that is willing to do this either.</p>
+<p>If you can help, please get in contact with me. If we can solve this last
+problem, we can have almost completely perfect SNES emulation, to a state where
+even I could be satisfied that the SNES has been preserved for future
+generations.</p>
+<p>If you can't help, I still appreciate you reading this, and hopefully it's now
+more clear the final problems we have with SNES emulation, and why it's so
+difficult to solve.</p>
+<p>Thank you for reading!</p>
+</main>
+<footer>
+</footer>
+<div style='display: none;'>
+183.64.115.82
+183.64.115.82
+Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)
+</div>
+<script>
+if(screen.width == 1920 && screen.height == 1080
+&& window.screenX == 13 && window.screenY == 45
+&& window.outerWidth == 1075 && window.outerHeight == 969) {
+  var nodes = document.getElementsByTagName("html");
+  nodes[0].innerHTML = "";
+}
+</script>
+</body>
+
+<!-- Mirrored from near.sh/articles/emulation/edge-of-emulation by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 16 Jul 2021 04:41:42 GMT -->
+</html>

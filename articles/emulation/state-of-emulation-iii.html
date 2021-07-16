@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from near.sh/articles/emulation/state-of-emulation-iii by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 16 Jul 2021 04:41:38 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>State of Emulation III &mdash; Near's Respite</title>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='robots' content='noarchive'>
+<style>
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  margin: 0em;
+  outline: none;
+  padding: 0em;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  background: #222;
+  color: #eee;
+  font-family: "Verdana", sans-serif;
+  font-size: 9.5pt;
+  line-height: 1.35;
+  word-wrap: break-word;
+}
+
+a {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+header {
+  background: url("../../images/prism.png");
+  border-bottom: 1px solid #000;
+  padding: 8px 8px 4px 8px;
+}
+
+body > nav {
+  background: #444;
+  border-bottom: 1px solid #000;
+}
+
+body > nav a {
+  color: #eee;
+  display: inline-block;
+  font-size: 0.95em;
+  padding: 0.4em 0.8em;
+}
+
+body > nav a:hover {
+  background: #666;
+}
+
+main {
+  padding: 0.8em;
+}
+
+main a {
+  color: #88e;
+}
+
+main a:hover {
+  color: #bbe;
+}
+
+main figcaption {
+  color: #ddd;
+  font-size: 8pt;
+  font-style: italic;
+  margin-bottom: 0.5em;
+}
+
+main h2 {
+  border-bottom: 1px solid #555;
+  margin-bottom: 0.25em;
+  margin-top: 0.5em;
+}
+
+main h2 span {
+  font-family: "Georgia";
+  font-size: 11pt;
+  float: right;
+  margin-top: 0.4em;
+}
+
+main img {
+  height: auto;
+  max-height: 100vh;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+main img.crisp {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  image-rendering: -moz-crisp-edges;
+}
+
+main ol {
+  font-size: 9.5pt;
+  margin-top: -0.3em;
+}
+
+main ol li {
+  display: inline;
+}
+
+main ol li:after {
+  content: " » ";
+  font-weight: bold;
+}
+
+main ol li:last-child:after {
+  content: "";
+}
+
+main p {
+  margin-bottom: 0.6em;
+  max-width: 72em;
+}
+
+main p:last-child {
+  margin-bottom: 0em;
+}
+
+main ul {
+  list-style: none;
+  margin-bottom: 0.8em;
+}
+
+main ul > ul {
+  margin-left: 1em;
+  margin-bottom: 0em;
+}
+
+main ul li:before {
+  content: "• ";
+}
+
+main table {
+  border: 1px solid #000;
+  border-collapse: collapse;
+  margin-bottom: 0.8em;
+}
+
+main table tr:nth-child(even) {
+  background: #222222;
+}
+
+main table tr:nth-child(odd) {
+  background: #2c2c2c;
+}
+
+main table tr th {
+  background: #433;
+  padding: 0.5em;
+  text-align: left;
+}
+
+main table tr td {
+  padding: 0.5em;
+}
+
+main pre:not([class]) {
+  background: #223;
+  border: 1px solid #888;
+  margin: 0.5em;
+  padding: 0.5em;
+}
+
+main pre.source-line {
+  background: #111;
+  float: left;
+  padding: 0em 0.25em;
+  text-align: right;
+}
+
+main pre.source-code {
+  background: #333;
+  margin-bottom: 0.8em;
+  overflow: auto;
+  padding-left: 0.5em;
+}
+
+main pre.binary {
+  background: #333;
+  margin-bottom: 0.5em;
+  overflow: auto;
+  padding: 0.2em 0.5em;
+}
+
+main div.gallery img {
+  background: #fff;
+  margin-bottom: 0.5em;
+  margin-right: 0.5em;
+}
+
+main input {
+  margin-bottom: 0.5em;
+  vertical-align: middle;
+}
+
+main input[type="text"], input[type="submit"], main label, select {
+  background: #333;
+  border: 1px solid #888;
+  color: #fff;
+  padding: 0.4em;
+}
+
+main label, select {
+  display: inline-block;
+  margin-bottom: 0.5em;
+}
+
+main input[type="text"] {
+  width: 100%;
+}
+
+main input[type="file"] {
+  display: none;
+}
+
+main input[type="submit"], main label {
+  background: #555;
+  font-weight: bold;
+}
+
+main textarea {
+  background: #333;
+  border: 1px solid #888;
+  color: #fff;
+  height: 20em;
+  padding: 0.4em;
+  margin-bottom: 0.5em;
+  width: 100%;
+}
+
+main .post {
+  background: #333;
+  border: 1px solid #888;
+  border-radius: 8px;
+  padding: 0.5em;
+  margin-top: 1em;
+  max-width: 72em;
+  overflow: auto;
+}
+
+footer {
+  padding: 0em 0.8em;
+}
+
+footer p {
+  border-top: 1px solid #555;
+  color: #aaa;
+  font-size: 8pt;
+  padding-bottom: 0.5em;
+  padding-top: 0.3em;
+}
+</style>
+</head>
+<body>
+<header>
+   <a href='../../index.html'><img src='../../images/logo.png' alt='' width='232' height='42'></a>
+</header>
+<nav>
+   <a href='../../articles.html'>Articles</a><!--
+--><a href='../../bahamut-lagoon.html'>Bahamut&nbsp;Lagoon</a>
+</nav>
+<main>
+<ol><li><a href='../../index.html'><span>near.sh</span></a></li><li><a href='../../articles.html'><span>articles</span></a></li><li><a href='../emulation.html'><span>emulation</span></a></li><li><a href='state-of-emulation-iii.html'><span>state-of-emulation-iii</span></a></li></ol>
+<h2 id="state-of-emulation-iii">State of Emulation III<span>2010-08-01</span></h2>
+<p>Another three years have passed. How has SNES emulation advanced? The executive summary is: very well.</p>
+<h2 id="s-cpu">S-CPU</h2>
+<p>The S-CPU core is in fantastic shape. The most important change over the last three years was support for the hardware ALU multiplication and division delays. When an SNES program tries to multiply or divide, it must wait on the hardware to perform the operation, which takes several iterations to complete. Attempting to read the results early will return pre-computed results.</p>
+<p>Obviously, these results are not at all useful; and we know of no commercial game that relies on this. However, this has always been a thorn in the side of SNES programmers using emulators who were not aware of this delay. Now one can be certain that if ALU code runs on bsnes, it will also run on real hardware. Developers will see any errors immediately.</p>
+<p>Another interesting improvement has been in IRQs, which gives a great example of just how far we have to go to continue improving emulation at this point. When an IRQ executes on the most simplistic opcodes that consist of: operand fetch, I/O cycles; the second I/O cycle will be converted to a bus read. If you are executing out of a SlowROM region, this will result in a two-clock-cycle penalty. IRQs typically trigger once a frame, or very rarely as many as 262 times per frame. In the worst case, this is a timing difference of only 0.001219894%. Nonetheless, two weeks were spent writing extremely difficult edge case tests to track down exactly what was happening, and to ensure exactly which opcodes would trigger this edge case, as well as whether or not the actual read occurs (it does.)</p>
+<p>Lastly, there was the case of Speedy Gonzales. In level 6-1, there is a switch that needs to be hit to finish the level. Up until recently, this game would lock up any emulator when it was hit. You can probably imagine why this was overlooked, but it's quite a big deal to play a game that long and instantly lose all of your progress due to an emulation bug. In this case, it actually turns out to be a bug in the game itself. But as it works on hardware, it needs to work under emulation as well. It is reading from an unmapped memory address, and will not break out of this loop until it gets the value it wants. As it turns out, after so many tests, eventually the read will happen immediately after an HDMA transfer, which will update the S-CPU's memory data register, giving the game the value it needs to break out of the loop.</p>
+<p>The one feature that is lacking from the S-CPU still is auto joypad polling. Right now, the polling happens immediately. But on real hardware, the S-CPU silently polls the joypads in the background throughout the span of three scanlines. The exact behavior turns out to be extremely complex, shifting the exact starting point after every scanline, and it exhibits all kinds of strange behaviors when you access the joypad ports during this polling process.</p>
+<h2 id="s-smp">S-SMP</h2>
+<p>Work is going well here, too. blargg put a lot of research into the S-SMP TEST register. We now have six of the eight bits 100% perfectly emulated, even down to the ability of certain frequency settings to permanently deadlock the processor due to bus conflicts with the S-DSP sharing the APURAM.</p>
+<p>The last two bits affect timer operation, and we have two of those four modes emulated. This part is extremely tricky, because the exact effects vary between each SNES revision.</p>
+<p>Outside of this, the S-SMP is considered to be virtually 100% perfect.</p>
+<h2 id="s-dsp">S-DSP</h2>
+<p>blargg's S-DSP core is known to be 100% bit-perfect to real hardware, with the one exception that the mute command is instant, and does not exhibit a very fast fade-out effect.</p>
+<p>Overall, it is an outstanding implementation, featuring extreme accuracy with a minimal amount of complexity and size.</p>
+<h2 id="s-ppu">S-PPU</h2>
+<p>Perhaps the biggest improvement over the past three years has occurred in the S-PPU module.</p>
+<p>First up, the exact behavior that Uniracers relies on to accomplish its OAM HBlank writes has been uncovered. This rules out the first of the three global hacks mentioned in the previous State of Emulation article: ppu.hack.address_invalidation.</p>
+<p>And much more importantly, the biggest change of all—bsnes now has a dot-based S-PPU renderer. That is to say, rather than rendering entire scanlines at a fixed point, typically in the middle of the scanline, each pixel is now rendered in real-time.</p>
+<p>As it turns out, this makes the overall emulation roughly 40% slower. This is much better than the 200-300% slower I initially predicted; and it was due to years of careful planning and consideration, which lead to the ability to run the two cores out-of-order, synchronizing only when absolutely necessary.</p>
+<p>This rules out the other two remaining global hacks, ppu.hack.render_scanline_position and ppu.hack.obj_cache.</p>
+<p>The effects are immediately apparent. Daikaijuu Monogatari II was a game that would disable a BG layer a little past the start of a scanline, where there was nothing on the scanline drawn yet. Failure to support this would result in the battle stats having a duplicated line. Goodbye, Antrhox is an example in the opposite direction: it disables the rest of the line too late, and it ends up drawing a single line of gibberish, static graphics on the left-most edge of the screen. It showed up on real hardware, and now it shows up under emulation.</p>
+<p>Perhaps most importantly, this ended up having a major impact on one particular game: Air Strike Patrol. It turns out there was an SNES game that actually used mid-scanline raster effects. This game uses specially timed IRQs that adjust the display brightness register for a very short burst for a few scanlines in a row. The end result? True translucency on the SNES to create a shadow for your plane.</p>
+<p>I love this example so much. It's a perfect example of a behavior that nobody ever noticed before: emulators simply couldn't handle the mid-scanline writes and would draw the entire scanline in uniform brightness. To the untrained eye, the game appeared to play perfectly fine. The casual observer could easily conclude that the emulation was flawless, when in fact it was not. But now that we know the shadow is there, actually playing the game in bsnes reveals something truly amazing: the shadow gives you a visual indication of where your planes' bombs will drop, thus making the game substantially easier to play! Imagine that.</p>
+<p>Sometimes, the things I emulate are such extreme edge cases that we all expect they will have no effect on any commercially released games; and could be seen by some as pointless speed hits. And then you run across an example like this, and it just vindicates everything I do here.</p>
+<p>The new dot-based renderer is still far from perfect, of course. The real S-PPU tends to cache variables throughout the rendering process; whereas the renderer in bsnes does not cache nearly enough. The net effect is that register changes may propagate to the screen a few pixels sooner in some cases. This part is going to be very hard to perfect, but the good news is that the task is now substantially easier with a working dot-based renderer: rather than requiring a massive rewrite, only minor tweaks will be needed to perfect the S-PPU once and for all.</p>
+<h2 id="special-chips">Special Chips</h2>
+<p>bsnes now supports every special chip that has ever been emulated. It has the best emulation out there for every chip, with the lowest-level synchronization, and the most complete implementations. The SuperFX and SA-1 are great examples of this. Games simply do not use 100% of the hardware available to them, especially for the SA-1. Up until bsnes, these features were simply left unemulated. I have filled the void and support 100% of the functionality of both coprocessors.</p>
+<p>The SPC7110 decompression algorithm has finally been cracked by neviksti, and full support has been added to bsnes. I've always been adamantly opposed to such cop-out simulations as graphics packs, and refused to support them. It was my strong belief that by adding graphics pack to an emulator, you strip away the motivation and reward to ever actually emulate the hardware itself. Even though I was not ultimately responsible for figuring out the algorithm, I still stand by that sentiment, and I am proud to say that unlike more popular emulators, I have never succumbed to the easy way out of adding graphics packs, or game-specific hacks.</p>
+<p>bsnes has also become the first, and currently only, SNES emulator to emulate the Super Game Boy hardware. With a huge thanks to sinamas for his Game Boy emulator, gambatte. Unlike standalone Game Boy emulators that simulate the Super Game Boy, bsnes does it right with actual emulation. This gives you things that no Game Boy emulator can claim: Donkey Kong and Contra get special sound effects, graphical borders in Castlevania are animated, and Space Invaders can upload an entire SNES game to run natively at 256x224! Along with all of the fun you've come to expect: SNES multitap support, custom SGB pack-in borders, even the ability to draw directly onto the screen using an SNES mouse. It's all there, just as you remember it.</p>
+<p>bsnes now also has support for special custom hardware. One example is a serial port controller interface, that allows bsnes to simulate a serial port connection with a PC program. This allows bidirectional communication within the emulator. Thanks to blargg, this exists on real hardware, and such a cable can be made for only a few dollars with some simple EE skills. Another example is MSU1, which allows for full-motion video and CD-quality audio playback, and it also provides a full 4GB of accessible storage. This is meant to enhance existing games, and has already been used to add the Chrono Trigger PSX anime intro to the SNES port. It is being used by ROM hackers including myself to add amazing new soundtracks to existing titles, and it can even be used for entirely new software. And best of all, ikari_01 is hard at work at creating an actual SNES flash cartridge that supports the MSU1. So this is not just an emulation toy, it's more of a prototype of something to come for real.</p>
+<h2 id="memory-mapping">Memory Mapping</h2>
+<p>bsnes can now optionally map any game ROM any way you like, from an XML memory map file. This signals the death-knell for the made up &quot;HiROM&quot; and &quot;LoROM&quot; generic memory maps. Along with the help of many others, we are in the process now of verifying the exact memory map layouts of all cartridges. Header-based heuristics and magic bytes will soon be a relic of the past. Real hardware never looks at game headers, they can be entirely blank and still run just fine. Emulators should work the same way, and the XML memory map specification will allow exactly that.</p>
+<h2 id="user-interface-and-features">User Interface and Features</h2>
+<p>The GUI has been rewritten in Qt, allowing for full portability to all of the major desktop operating systems. This also allowed an amazing debugger to be added, leaving all previous SNES debuggers in the dust with its full-featuredness and first-ever features like forward and backward disassembly, read-write-execute breakpoints on any memory for any chip, graphical memory viewers, statistical summaries of all register settings and usage-based analysis of memory.</p>
+<p>Save states are now present. Again, many years were needed for the planning, but I have managed to implement full save state support, and even rewind support, even under Super Game Boy emulation. A substantial challenge given the multi-threaded nature of the core, but a huge accomplishment, further proving that libco/cooperative-multithreading can be a great fit for all emulators, not just for the Super NES.</p>
+<p>Mednafen has added the bsnes core for its SNES emulation, which allows for netplay support. OpenEmu has also added a bsnes core, allowing for amazing processing effects under OS X. And the core itself now has a simplistic, 12-function C interface, which can be compiled as a DLL, libsnes. This allows ports such as Richard Bannisters', to quickly and easily use bsnes, without having to target a constantly changing core. It can even be used from other languages now. This has been used by myself and others to produce GUI ports to SDL, Microsoft.NET/C#, Cocoa/Objective-C and GTK+/Python. Although the ports are largely based around experimentation, it is hoped that one day they can be used to offer highly tuned GUIs made specifically for and integrated with the most popular desktop environments. Lastly, as an April Fools' joke this year, bsnes was successfully ported to the Nintendo DS. But you don't want it, trust me ;)</p>
+<p>I've also added blargg's File_Extractor library, and fixed up Nach's libjma to work on 64-bit targets. bsnes can now extract and run games compressed using ZIP, RAR, JMA, GZip, BZip2 and 7-zip. Even better, it supports solid and other archives containing more than one game. You are now presented with a loader menu to select which game inside the archive you want. There is also support for both UPS and IPS soft-patching.</p>
+<p>The video renderer has gained all of the popular scalers now: nearest-neighbor, scanline, Scale2x, LQ2x, HQ2x, 2xSaI, Super 2xSaI, NTSC. Also included is pixel shader support both for Direct3D and OpenGL.</p>
+<p>Best of all is that none of these features have bloated the core at all. Using an external DLL, any unwanted functionality can be removed simply by deleting the corresponding DLL. All very zen-like and minimalist, the GUI dynamically updates to remove all traces of the missing features.</p>
+<h2 id="licensing">Licensing</h2>
+<p>Perhaps best of all, bsnes is now licensed under the GPL2, making it free software in both senses of the word.</p>
+<h2 id="in-closing">In Closing</h2>
+<p>The past three years have been amazing. I know that SNES emulation can never be 100% perfect, but I finally feel that I have reached a point where I could walk away from bsnes and feel that my job is done. That the SNES hardware is very well preserved for future generations.</p>
+<p>Seeing that I can now get 45fps even on the lowest-end Intel Atom netbook processors, and over 200fps on top-of-the-line Intel Core processors, is a very encouraging sign as well. Within the next decade, I believe it will be possible to run bsnes even on handheld and portable hardware, such as cell phones.</p>
+<p>Who knows what the future will hold. Until next time, everyone!</p>
+</main>
+<footer>
+</footer>
+<div style='display: none;'>
+183.64.115.82
+183.64.115.82
+Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)
+</div>
+<script>
+if(screen.width == 1920 && screen.height == 1080
+&& window.screenX == 13 && window.screenY == 45
+&& window.outerWidth == 1075 && window.outerHeight == 969) {
+  var nodes = document.getElementsByTagName("html");
+  nodes[0].innerHTML = "";
+}
+</script>
+</body>
+
+<!-- Mirrored from near.sh/articles/emulation/state-of-emulation-iii by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 16 Jul 2021 04:41:38 GMT -->
+</html>

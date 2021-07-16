@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from near.sh/articles/cpu/alu by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 16 Jul 2021 04:41:42 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>ALU &mdash; Near's Respite</title>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='robots' content='noarchive'>
+<style>
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  margin: 0em;
+  outline: none;
+  padding: 0em;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  background: #222;
+  color: #eee;
+  font-family: "Verdana", sans-serif;
+  font-size: 9.5pt;
+  line-height: 1.35;
+  word-wrap: break-word;
+}
+
+a {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+header {
+  background: url("../../images/prism.png");
+  border-bottom: 1px solid #000;
+  padding: 8px 8px 4px 8px;
+}
+
+body > nav {
+  background: #444;
+  border-bottom: 1px solid #000;
+}
+
+body > nav a {
+  color: #eee;
+  display: inline-block;
+  font-size: 0.95em;
+  padding: 0.4em 0.8em;
+}
+
+body > nav a:hover {
+  background: #666;
+}
+
+main {
+  padding: 0.8em;
+}
+
+main a {
+  color: #88e;
+}
+
+main a:hover {
+  color: #bbe;
+}
+
+main figcaption {
+  color: #ddd;
+  font-size: 8pt;
+  font-style: italic;
+  margin-bottom: 0.5em;
+}
+
+main h2 {
+  border-bottom: 1px solid #555;
+  margin-bottom: 0.25em;
+  margin-top: 0.5em;
+}
+
+main h2 span {
+  font-family: "Georgia";
+  font-size: 11pt;
+  float: right;
+  margin-top: 0.4em;
+}
+
+main img {
+  height: auto;
+  max-height: 100vh;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+main img.crisp {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  image-rendering: -moz-crisp-edges;
+}
+
+main ol {
+  font-size: 9.5pt;
+  margin-top: -0.3em;
+}
+
+main ol li {
+  display: inline;
+}
+
+main ol li:after {
+  content: " » ";
+  font-weight: bold;
+}
+
+main ol li:last-child:after {
+  content: "";
+}
+
+main p {
+  margin-bottom: 0.6em;
+  max-width: 72em;
+}
+
+main p:last-child {
+  margin-bottom: 0em;
+}
+
+main ul {
+  list-style: none;
+  margin-bottom: 0.8em;
+}
+
+main ul > ul {
+  margin-left: 1em;
+  margin-bottom: 0em;
+}
+
+main ul li:before {
+  content: "• ";
+}
+
+main table {
+  border: 1px solid #000;
+  border-collapse: collapse;
+  margin-bottom: 0.8em;
+}
+
+main table tr:nth-child(even) {
+  background: #222222;
+}
+
+main table tr:nth-child(odd) {
+  background: #2c2c2c;
+}
+
+main table tr th {
+  background: #433;
+  padding: 0.5em;
+  text-align: left;
+}
+
+main table tr td {
+  padding: 0.5em;
+}
+
+main pre:not([class]) {
+  background: #223;
+  border: 1px solid #888;
+  margin: 0.5em;
+  padding: 0.5em;
+}
+
+main pre.source-line {
+  background: #111;
+  float: left;
+  padding: 0em 0.25em;
+  text-align: right;
+}
+
+main pre.source-code {
+  background: #333;
+  margin-bottom: 0.8em;
+  overflow: auto;
+  padding-left: 0.5em;
+}
+
+main pre.binary {
+  background: #333;
+  margin-bottom: 0.5em;
+  overflow: auto;
+  padding: 0.2em 0.5em;
+}
+
+main div.gallery img {
+  background: #fff;
+  margin-bottom: 0.5em;
+  margin-right: 0.5em;
+}
+
+main input {
+  margin-bottom: 0.5em;
+  vertical-align: middle;
+}
+
+main input[type="text"], input[type="submit"], main label, select {
+  background: #333;
+  border: 1px solid #888;
+  color: #fff;
+  padding: 0.4em;
+}
+
+main label, select {
+  display: inline-block;
+  margin-bottom: 0.5em;
+}
+
+main input[type="text"] {
+  width: 100%;
+}
+
+main input[type="file"] {
+  display: none;
+}
+
+main input[type="submit"], main label {
+  background: #555;
+  font-weight: bold;
+}
+
+main textarea {
+  background: #333;
+  border: 1px solid #888;
+  color: #fff;
+  height: 20em;
+  padding: 0.4em;
+  margin-bottom: 0.5em;
+  width: 100%;
+}
+
+main .post {
+  background: #333;
+  border: 1px solid #888;
+  border-radius: 8px;
+  padding: 0.5em;
+  margin-top: 1em;
+  max-width: 72em;
+  overflow: auto;
+}
+
+footer {
+  padding: 0em 0.8em;
+}
+
+footer p {
+  border-top: 1px solid #555;
+  color: #aaa;
+  font-size: 8pt;
+  padding-bottom: 0.5em;
+  padding-top: 0.3em;
+}
+</style>
+</head>
+<body>
+<header>
+   <a href='../../index.html'><img src='../../images/logo.png' alt='' width='232' height='42'></a>
+</header>
+<nav>
+   <a href='../../articles.html'>Articles</a><!--
+--><a href='../../bahamut-lagoon.html'>Bahamut&nbsp;Lagoon</a>
+</nav>
+<main>
+<ol><li><a href='../../index.html'><span>near.sh</span></a></li><li><a href='../../articles.html'><span>articles</span></a></li><li><a href='../cpu.html'><span>cpu</span></a></li><li><a href='alu.html'><span>alu</span></a></li></ol>
+<h2 id="alu">ALU<span>2019-08-28</span></h2>
+<p>These are algorithms to compute the overflow, carry, and half-carry (Z80 family)
+flags for addition and subtraction operations, without the use of branches.</p>
+<p>They are designed to not require extra bits in the result computation, so that
+they can be templated to larger-sized types, and be used even with the largest
+type a given machine is capable of using.</p>
+<p>Of course, to template these, you will need a portable way to extract the
+highest bit of a given integer type for the overflow and carry masks, eg:</p>
+<pre>natural sign = (natural(0) - 1 &gt;&gt; 1) + 1;</pre>
+<p>In the below examples, natural can be any type from uint1 to uintmax. boolean
+has the same behavior as bool: output = input ? true : false -- that is to say,
+value &amp; bit will subtract a desired bit, rather than value &gt;&gt; bit - 1 &amp; 1.</p>
+<h2 id="adc-add-with-carry">ADC: add with carry</h2>
+<pre>auto adc(natural target, natural source, boolean carry) -&gt; uint8 {
+  natural result   = target + source + carry;
+  natural carries  = target ^ source ^ result;
+  natural overflow = (target ^ result) &amp; (source ^ result);
+
+  flag.overflow  = overflow &amp; sign;
+  flag.carry     = (carries ^ overflow) &amp; sign;
+  flag.halfCarry = carries &amp; 16;  //Z80
+
+  return result;
+}</pre>
+<h2 id="sbb-subtract-with-borrow">SBB: subtract with borrow</h2>
+<p>Nearly all processors implementation subtraction via borrow. Certain CPU vendors
+have confused this, and named their implementations SBC (subtract with carry),
+even though that is a different operation. A notable example here is the Toshiba
+TLCS900H.</p>
+<pre>auto sbb(natural target, natural source, boolean carry) -&gt; uint8 {
+  natural result   = target - source - carry;
+  natural carries  = target ^ source ^ result;
+  natural overflow = (target ^ result) &amp; (source ^ target);
+
+  flag.overflow  = overflow &amp; sign;
+  flag.carry     = (carries ^ overflow) &amp; sign;
+  flag.halfCarry = carries &amp; 16;  //Z80
+
+  return result;
+}</pre>
+<h3 id="sbb-from-adc">SBB from ADC</h3>
+<pre>auto sbb(natural target, natural source, boolean carry) -&gt; uint8 {
+  natural result = adc(target, ~source, !carry);
+
+  flag.carry     = !flag.carry;
+  flag.halfCarry = !flag.halfCarry;
+
+  return result;
+}</pre>
+<h2 id="sbc-subtract-with-carry">SBC: subtract with carry</h2>
+<p>The 6502 series of processors (MOS6502, Ricoh 6502, HuC6280, WDC65816) use carry
+rather than borrow for subtraction.</p>
+<pre>auto sbc(natural target, natural source, boolean carry) -&gt; uint8 {
+  natural result   = target - source - !carry;
+  natural carries  = target ^ ~source ^ result;
+  natural overflow = (target ^ result) &amp; (source ^ target);
+
+  flag.overflow  = overflow &amp; sign;
+  flag.carry     = (carries ^ overflow) &amp; sign;
+  flag.halfCarry = carries &amp; 16;  //Z80
+
+  return result;
+}</pre>
+<h3 id="sbc-from-adc">SBC from ADC</h3>
+<p>The reason for this becomes clear when looking at an alternate implementation:</p>
+<pre>auto sbc(natural target, natural source, boolean carry) -&gt; uint8 {
+  return adc(target, ~source, carry);
+}</pre>
+<p>With the 6502 weighing in at just 3500 transistors, it becomes advantageous to
+be able to reuse the ADC circuitry for SBC. Although this can be done with SBB
+as well, it is more complicated due to the flags needing to be inverted.</p>
+<h2 id="thanks">Thanks</h2>
+<p>Special thanks to Talarubi for the insight into creating a branchless carry
+computation!</p>
+</main>
+<footer>
+</footer>
+<div style='display: none;'>
+183.64.115.82
+183.64.115.82
+Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)
+</div>
+<script>
+if(screen.width == 1920 && screen.height == 1080
+&& window.screenX == 13 && window.screenY == 45
+&& window.outerWidth == 1075 && window.outerHeight == 969) {
+  var nodes = document.getElementsByTagName("html");
+  nodes[0].innerHTML = "";
+}
+</script>
+</body>
+
+<!-- Mirrored from near.sh/articles/cpu/alu by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 16 Jul 2021 04:41:42 GMT -->
+</html>

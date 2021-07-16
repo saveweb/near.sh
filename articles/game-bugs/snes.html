@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from near.sh/articles/game-bugs/snes by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 16 Jul 2021 04:41:53 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>SNES Game Bugs &mdash; Near's Respite</title>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='robots' content='noarchive'>
+<style>
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  margin: 0em;
+  outline: none;
+  padding: 0em;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  background: #222;
+  color: #eee;
+  font-family: "Verdana", sans-serif;
+  font-size: 9.5pt;
+  line-height: 1.35;
+  word-wrap: break-word;
+}
+
+a {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+header {
+  background: url("../../images/prism.png");
+  border-bottom: 1px solid #000;
+  padding: 8px 8px 4px 8px;
+}
+
+body > nav {
+  background: #444;
+  border-bottom: 1px solid #000;
+}
+
+body > nav a {
+  color: #eee;
+  display: inline-block;
+  font-size: 0.95em;
+  padding: 0.4em 0.8em;
+}
+
+body > nav a:hover {
+  background: #666;
+}
+
+main {
+  padding: 0.8em;
+}
+
+main a {
+  color: #88e;
+}
+
+main a:hover {
+  color: #bbe;
+}
+
+main figcaption {
+  color: #ddd;
+  font-size: 8pt;
+  font-style: italic;
+  margin-bottom: 0.5em;
+}
+
+main h2 {
+  border-bottom: 1px solid #555;
+  margin-bottom: 0.25em;
+  margin-top: 0.5em;
+}
+
+main h2 span {
+  font-family: "Georgia";
+  font-size: 11pt;
+  float: right;
+  margin-top: 0.4em;
+}
+
+main img {
+  height: auto;
+  max-height: 100vh;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+main img.crisp {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  image-rendering: -moz-crisp-edges;
+}
+
+main ol {
+  font-size: 9.5pt;
+  margin-top: -0.3em;
+}
+
+main ol li {
+  display: inline;
+}
+
+main ol li:after {
+  content: " » ";
+  font-weight: bold;
+}
+
+main ol li:last-child:after {
+  content: "";
+}
+
+main p {
+  margin-bottom: 0.6em;
+  max-width: 72em;
+}
+
+main p:last-child {
+  margin-bottom: 0em;
+}
+
+main ul {
+  list-style: none;
+  margin-bottom: 0.8em;
+}
+
+main ul > ul {
+  margin-left: 1em;
+  margin-bottom: 0em;
+}
+
+main ul li:before {
+  content: "• ";
+}
+
+main table {
+  border: 1px solid #000;
+  border-collapse: collapse;
+  margin-bottom: 0.8em;
+}
+
+main table tr:nth-child(even) {
+  background: #222222;
+}
+
+main table tr:nth-child(odd) {
+  background: #2c2c2c;
+}
+
+main table tr th {
+  background: #433;
+  padding: 0.5em;
+  text-align: left;
+}
+
+main table tr td {
+  padding: 0.5em;
+}
+
+main pre:not([class]) {
+  background: #223;
+  border: 1px solid #888;
+  margin: 0.5em;
+  padding: 0.5em;
+}
+
+main pre.source-line {
+  background: #111;
+  float: left;
+  padding: 0em 0.25em;
+  text-align: right;
+}
+
+main pre.source-code {
+  background: #333;
+  margin-bottom: 0.8em;
+  overflow: auto;
+  padding-left: 0.5em;
+}
+
+main pre.binary {
+  background: #333;
+  margin-bottom: 0.5em;
+  overflow: auto;
+  padding: 0.2em 0.5em;
+}
+
+main div.gallery img {
+  background: #fff;
+  margin-bottom: 0.5em;
+  margin-right: 0.5em;
+}
+
+main input {
+  margin-bottom: 0.5em;
+  vertical-align: middle;
+}
+
+main input[type="text"], input[type="submit"], main label, select {
+  background: #333;
+  border: 1px solid #888;
+  color: #fff;
+  padding: 0.4em;
+}
+
+main label, select {
+  display: inline-block;
+  margin-bottom: 0.5em;
+}
+
+main input[type="text"] {
+  width: 100%;
+}
+
+main input[type="file"] {
+  display: none;
+}
+
+main input[type="submit"], main label {
+  background: #555;
+  font-weight: bold;
+}
+
+main textarea {
+  background: #333;
+  border: 1px solid #888;
+  color: #fff;
+  height: 20em;
+  padding: 0.4em;
+  margin-bottom: 0.5em;
+  width: 100%;
+}
+
+main .post {
+  background: #333;
+  border: 1px solid #888;
+  border-radius: 8px;
+  padding: 0.5em;
+  margin-top: 1em;
+  max-width: 72em;
+  overflow: auto;
+}
+
+footer {
+  padding: 0em 0.8em;
+}
+
+footer p {
+  border-top: 1px solid #555;
+  color: #aaa;
+  font-size: 8pt;
+  padding-bottom: 0.5em;
+  padding-top: 0.3em;
+}
+</style>
+</head>
+<body>
+<header>
+   <a href='../../index.html'><img src='../../images/logo.png' alt='' width='232' height='42'></a>
+</header>
+<nav>
+   <a href='../../articles.html'>Articles</a><!--
+--><a href='../../bahamut-lagoon.html'>Bahamut&nbsp;Lagoon</a>
+</nav>
+<main>
+<ol><li><a href='../../index.html'><span>near.sh</span></a></li><li><a href='../../articles.html'><span>articles</span></a></li><li><a href='../game-bugs.html'><span>game-bugs</span></a></li><li><a href='snes.html'><span>snes</span></a></li></ol>
+<h2 id="snes-game-bugs">SNES Game Bugs<span>2019-09-28</span></h2>
+<p>These are bugs that exist in SNES games and which occur even on original
+hardware.</p>
+<h2 id="dirt-racer">Dirt Racer</h2>
+<p><a href="../../images/articles/game-bugs/snes/dirt-racer.png"><img loading="lazy" src="../../images/articles/game-bugs/snes/dirt-racer.png" alt="Dirt Racer bug"></a></p>
+<p>This game will freeze on the startup splash screen sometimes when SNES WRAM
+contains zero bits in certain locations.</p>
+<p>SNES WRAM is non-deterministic at startup, and so there is a chance this bug
+will occur on real hardware.</p>
+<h2 id="heisei-inu-monogatari-bow-pop-n-smash">Heisei Inu Monogatari: Bow Pop'n Smash!!</h2>
+<p><a href="../../images/articles/game-bugs/snes/heisei-inu-monogatari.png"><img loading="lazy" src="../../images/articles/game-bugs/snes/heisei-inu-monogatari.png" alt="Heisei Inu Monogatari bug"></a></p>
+<p>When choosing Taisen mode, there is a flickering black line at the top of the
+screen. This line is usually cut off by CRT television overscan, but can be seen
+with video capture card devices.</p>
+<p>What happens is the game takes too long during certain Vblank sequences and
+misses the start of the next frame, enabling the display one scanline too late,
+but only occasionally, hence the flickering.</p>
+<h2 id="hurricanes-the">Hurricanes, The</h2>
+<p><a href="../../images/articles/game-bugs/snes/hurricanes.png"><img loading="lazy" src="../../images/articles/game-bugs/snes/hurricanes.png" alt="The Hurricanes bug"></a></p>
+<p>During the attract sequence for level 12, sometimes a row of bad tiles are seen
+in the above scene in the background.</p>
+<p>This is caused by the game not initializing WRAM before transferring data into
+VRAM for BG2. If an emulator randomizes RAM at startup as real hardware would,
+this bug will be seen under emulation.</p>
+<p>The bug has a random chance of occurring on original hardware.</p>
+<h2 id="magical-drop">Magical Drop</h2>
+<p><a href="../../images/articles/game-bugs/snes/magical-drop.png"><img loading="lazy" src="../../images/articles/game-bugs/snes/magical-drop.png" alt="Magical Drop bug"></a></p>
+<p>In Tokoton mode, losing the game will sometimes soft-lock, preventing you from
+entering your initials and then trying again.</p>
+<p>This bug is caused by the game not initializing the SNES DSP registers at
+startup. The register values are non-deterministic at SNES startup, and when the
+wrong value ends up in certain registers (PITCH and ENVX), this bug will
+surface.</p>
+<p>This bug is somewhat uncommon to trigger on a real SNES, but multiple
+confirmations have shown that it can and does happen on real hardware.</p>
+<h2 id="super-bonk">Super Bonk</h2>
+<p><a href="../../images/articles/game-bugs/snes/super-bonk.png"><img loading="lazy" src="../../images/articles/game-bugs/snes/super-bonk.png" alt="Super Bonk bug"></a></p>
+<p>During the attract sequence, there is a chance that the scripted input sequence
+will become desynchronized, and Bonk will get stuck in front of the
+jet-roller pipeline sign.</p>
+<p>This happens due to the natural variance in the SNES CPU and APU oscillators.</p>
+<p>Depending on the SNES, the attract sequence will either always work correctly,
+always break, or only periodically break. We've seen all three in practice.</p>
+<p>As emulators are deterministic in nature (for the sake of tool-assisted
+speedruns and bug reproducability), this bug is likely to either always occur or
+never occur under emulation.</p>
+</main>
+<footer>
+</footer>
+<div style='display: none;'>
+183.64.115.82
+183.64.115.82
+Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)
+</div>
+<script>
+if(screen.width == 1920 && screen.height == 1080
+&& window.screenX == 13 && window.screenY == 45
+&& window.outerWidth == 1075 && window.outerHeight == 969) {
+  var nodes = document.getElementsByTagName("html");
+  nodes[0].innerHTML = "";
+}
+</script>
+</body>
+
+<!-- Mirrored from near.sh/articles/game-bugs/snes by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 16 Jul 2021 04:41:54 GMT -->
+</html>

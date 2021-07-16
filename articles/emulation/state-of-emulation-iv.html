@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from near.sh/articles/emulation/state-of-emulation-iv by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 16 Jul 2021 04:41:38 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>State of Emulation IV &mdash; Near's Respite</title>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='robots' content='noarchive'>
+<style>
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  margin: 0em;
+  outline: none;
+  padding: 0em;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  background: #222;
+  color: #eee;
+  font-family: "Verdana", sans-serif;
+  font-size: 9.5pt;
+  line-height: 1.35;
+  word-wrap: break-word;
+}
+
+a {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+header {
+  background: url("../../images/prism.png");
+  border-bottom: 1px solid #000;
+  padding: 8px 8px 4px 8px;
+}
+
+body > nav {
+  background: #444;
+  border-bottom: 1px solid #000;
+}
+
+body > nav a {
+  color: #eee;
+  display: inline-block;
+  font-size: 0.95em;
+  padding: 0.4em 0.8em;
+}
+
+body > nav a:hover {
+  background: #666;
+}
+
+main {
+  padding: 0.8em;
+}
+
+main a {
+  color: #88e;
+}
+
+main a:hover {
+  color: #bbe;
+}
+
+main figcaption {
+  color: #ddd;
+  font-size: 8pt;
+  font-style: italic;
+  margin-bottom: 0.5em;
+}
+
+main h2 {
+  border-bottom: 1px solid #555;
+  margin-bottom: 0.25em;
+  margin-top: 0.5em;
+}
+
+main h2 span {
+  font-family: "Georgia";
+  font-size: 11pt;
+  float: right;
+  margin-top: 0.4em;
+}
+
+main img {
+  height: auto;
+  max-height: 100vh;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+main img.crisp {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  image-rendering: -moz-crisp-edges;
+}
+
+main ol {
+  font-size: 9.5pt;
+  margin-top: -0.3em;
+}
+
+main ol li {
+  display: inline;
+}
+
+main ol li:after {
+  content: " » ";
+  font-weight: bold;
+}
+
+main ol li:last-child:after {
+  content: "";
+}
+
+main p {
+  margin-bottom: 0.6em;
+  max-width: 72em;
+}
+
+main p:last-child {
+  margin-bottom: 0em;
+}
+
+main ul {
+  list-style: none;
+  margin-bottom: 0.8em;
+}
+
+main ul > ul {
+  margin-left: 1em;
+  margin-bottom: 0em;
+}
+
+main ul li:before {
+  content: "• ";
+}
+
+main table {
+  border: 1px solid #000;
+  border-collapse: collapse;
+  margin-bottom: 0.8em;
+}
+
+main table tr:nth-child(even) {
+  background: #222222;
+}
+
+main table tr:nth-child(odd) {
+  background: #2c2c2c;
+}
+
+main table tr th {
+  background: #433;
+  padding: 0.5em;
+  text-align: left;
+}
+
+main table tr td {
+  padding: 0.5em;
+}
+
+main pre:not([class]) {
+  background: #223;
+  border: 1px solid #888;
+  margin: 0.5em;
+  padding: 0.5em;
+}
+
+main pre.source-line {
+  background: #111;
+  float: left;
+  padding: 0em 0.25em;
+  text-align: right;
+}
+
+main pre.source-code {
+  background: #333;
+  margin-bottom: 0.8em;
+  overflow: auto;
+  padding-left: 0.5em;
+}
+
+main pre.binary {
+  background: #333;
+  margin-bottom: 0.5em;
+  overflow: auto;
+  padding: 0.2em 0.5em;
+}
+
+main div.gallery img {
+  background: #fff;
+  margin-bottom: 0.5em;
+  margin-right: 0.5em;
+}
+
+main input {
+  margin-bottom: 0.5em;
+  vertical-align: middle;
+}
+
+main input[type="text"], input[type="submit"], main label, select {
+  background: #333;
+  border: 1px solid #888;
+  color: #fff;
+  padding: 0.4em;
+}
+
+main label, select {
+  display: inline-block;
+  margin-bottom: 0.5em;
+}
+
+main input[type="text"] {
+  width: 100%;
+}
+
+main input[type="file"] {
+  display: none;
+}
+
+main input[type="submit"], main label {
+  background: #555;
+  font-weight: bold;
+}
+
+main textarea {
+  background: #333;
+  border: 1px solid #888;
+  color: #fff;
+  height: 20em;
+  padding: 0.4em;
+  margin-bottom: 0.5em;
+  width: 100%;
+}
+
+main .post {
+  background: #333;
+  border: 1px solid #888;
+  border-radius: 8px;
+  padding: 0.5em;
+  margin-top: 1em;
+  max-width: 72em;
+  overflow: auto;
+}
+
+footer {
+  padding: 0em 0.8em;
+}
+
+footer p {
+  border-top: 1px solid #555;
+  color: #aaa;
+  font-size: 8pt;
+  padding-bottom: 0.5em;
+  padding-top: 0.3em;
+}
+</style>
+</head>
+<body>
+<header>
+   <a href='../../index.html'><img src='../../images/logo.png' alt='' width='232' height='42'></a>
+</header>
+<nav>
+   <a href='../../articles.html'>Articles</a><!--
+--><a href='../../bahamut-lagoon.html'>Bahamut&nbsp;Lagoon</a>
+</nav>
+<main>
+<ol><li><a href='../../index.html'><span>near.sh</span></a></li><li><a href='../../articles.html'><span>articles</span></a></li><li><a href='../emulation.html'><span>emulation</span></a></li><li><a href='state-of-emulation-iv.html'><span>state-of-emulation-iv</span></a></li></ol>
+<h2 id="state-of-emulation-iv">State of Emulation IV<span>2016-04-03</span></h2>
+<p>It's been nearly six years since the last article in this series. Since then, bsnes has evoled into the multi-system emulator, higan.</p>
+<h2 id="low-level-coprocessor-emulation">Low-Level Coprocessor Emulation</h2>
+<p>Focusing on the SNES, the final major milestone was full low-level emulation of SNES coprocessors: the DSP-n series (NEC uPD7725), ST-01n series (NEC uPD96050), ST-018 (ARM v3) and Cx4 (Hitachi HG51B169). This was a huge accomplishment made possible by the work of countless individuals and the help of many donors to fundraise the costs associated with decapping these chips to extract their firmware.</p>
+<p>Yet with the completion of this important goal, we've finally consumed all of the significant advances that remain in the realm of SNES emulation. As such, progress has really slowed down over the past four years now, because there just isn't that much to do anymore.</p>
+<p>That's not to say there's been no progress, nor that more isn't coming, of course. But there's nothing remaining that's going to grab any headlines.</p>
+<h2 id="the-advent-of-gamepaks">The Advent of Gamepaks</h2>
+<p>As a consequence of DSP LLE, coprocessor firmware became a requirement to play many major SNES games.</p>
+<p>Furthermore, I began a preservation project to collect and redump every SNES game ever released. In doing so, it became apparently clear that our emulation of the SNES memory map for games was very flawed: rather than emulate which areas of memory were unmapped (open bus), we simply mirrored ROM and RAM into every possible location in the hopes of maximizing compatibility. Along with several nasty game-specific memory mapping hacks, we were able to get this functional for all games, but a hack is a hack, and bsnes has always been about eliminating hacks, and so with my dumping project, I began mapping out the exact memory layouts of each and every game in the library. This change brought with it the requirement for cartridge mapping information.</p>
+<p>Finally, I added support for a new feature known as MSU1: this was an artificial enhancement coprocessor designed to add up to 4GiB of storage and to allow CD-quality audio streaming. But instead of being emulator-only, it was designed to work on real hardware. And thanks to ikari's sd2snes, it now does so! However, this new support further required a very large data ROM, and music files for each CD-audio track used by MSU1.</p>
+<p>All of these advances combined pushed the old system of storing all game ROMs in the same folder to its breaking point. The old organizational system of specifying separate paths for each file type (save RAM, save states, cheat codes, etc) no longer scaled with coprocessor firmware, cartridge mapping information, and MSU1 audio/data files added to the mix.</p>
+<p>So this brought about game folders, or gamepaks. The idea was to have one folder for each video game, where all files for said game would be stored within said folder. Aside from years of growing pains as variations on the cartridge mapping syntax and file naming, I did eventually land on a stable and backward-compatible system for these gamepaks.</p>
+<h2 id="complexity-creep">Complexity Creep</h2>
+<p>Unfortunately, gamepaks were a major departure from the way traditional emulators worked. And indeed, no other emulators were eager to implement this new system. Not the least of which because they all lacked the new features of bsnes, and would thus have no use for them.</p>
+<p>This change also created severe backlash amongst bsnes users; literally decimating the userbase from ~100,000 downloads a release to around ~10,000 per release. It alienated many long-time supporters, turned some into foes of the project, and resulted in roughly a dozen forks of bsnes.</p>
+<p>This was, in a sense, a long time coming. Super Game Boy, BS-X Satellaview and Sufami Turbo emulation had already complicated game loading. Multiple peripherals had complicated input configuration. DSP LLE had greatly slowed down emulation and complicated game loading. The dot-based PPU renderer cut performance in half; which spawned a complicated system involving multiple emulation profiles that confused users. Emulating more and more of the SNES resulted in the necessity to scale back features to keep the user interface sane.</p>
+<p>The addition of Super Game Boy support landed a Game Boy and Game Boy Color emulator in bsnes. The addition of the ST018 led to most of the work being in place, and ultimately led to bsnes gaining a Game Boy Advance emulator. A desire to round out the emulator set eventually led to a Famicom emulator, and most recently, a WonderSwan and WonderSwan Color emulator. These additional emulators further required simplifying and removing SNES-specific settings from the user interface, alienating even more users.</p>
+<h2 id="higan">higan</h2>
+<p>Ultimately, the growing number of emulated systems made the bsnes name increasingly inaccurate. A new name was needed that didn't imply the emulator being specific to just the SNES, and so the project was rebranded as higan.</p>
+<p>While it was certainly gamepaks that caused the biggest revolt, a clear pattern had emerged: in order for bsnes/higan to grow, complexity would continue to increase, and performance would continue to suffer.</p>
+<h2 id="complexity">Complexity</h2>
+<p>The complexity is just going to keep soaring.</p>
+<p>Recently, a prototype of the Nintendo PlayStation, the failed hardware merger between Nintendo and Sony, emerged. After obtaining the BIOS, work has begun to emulate this device. While it's not all that practical with no games available for it, it is a very interesting piece of hardware, and very fun to try and preserve this hugely important piece of gaming history.</p>
+<p>But this device is not simple: for the first time, now higan has to consider how to load and access CD-ROMs. Even worse, it has to do this not from a cartridge, but from an expansion port device. Furthermore, it should probably be allowed to eject and insert new CDs while the system is running. But higan has no mechanisms for this, and adding them will only serve to complicate the user interface more.</p>
+<p>Famicom Disk System emulation will hopefully land at some point in the future, which will bring with it more complexities.</p>
+<p>Both the Famicom and Super Famicom have dozens of complex peripherals that bring in all kinds of newe complexities. Take the SNES Voicer-Kun: this was a user-programmable IR blaster that would let you play vocal tracks from included audio CDs for Japanese drama games. Emulating this is going to require connecting SNES input peripherals to the audio mixing system in higan, and these games are going to then require FLAC audio rips of the CDs to be included in their relevant game folders, which will make playing these games even tougher. Especially as nobody has ever bothered to image these audio CDs before.</p>
+<p>Or how about the Barcode Battler? The Lasabirdie golf club? The Exertainment exercise bike? How in the hell do you even emulate items like this?? I certainly don't know, but I do know it's going to require lots of new code, lots of new user interface extensions, and lots of configuration.</p>
+<p>And then there's improving the Satellaview emulation: where we get to emulate a now-defunct satellite network to bring the BS-X Town back to life. And to properly emulate this system, we have to allow the Satellaview flash cartridges to be writable. And in doing this, we will restore the Satellaview's play count limits. Won't it be fun when the stock BIOS automatically erases your games because you've played them too many times?</p>
+<p>Or how about the NTT modem? If we want to play the JRA PAT and SPAT games, we'll have to emulate a dial-up modem, and a remote ISP that was used to place real-life bets on horse racing games. I don't even think it's going to be possible to do anything useful with this. But simulating a dial-up modem through an emulated controller sure doesn't sound like fun.</p>
+<h2 id="performance">Performance</h2>
+<p>Meanwhile, my hopes that CPU performance would grow to enable bsnes to run even on low-end ARM hardware has yet to come to fruition. While ARM has very slowly made strides toward running faster, the x86 hasn't really picked up much speed.</p>
+<p>The focus has shifted toward adding more and more processor cores to CPUs, and this ends up lowering their performance to mitigate added heat generation. But extra cores do not help classic emulators that require such tight synchronization that everything has to be implemented on a single CPU core.</p>
+<p>At the moment, I can't even conceive of a time when I might be able to properly emulate the SA-1's bus conflict manager that inserts stalls into the slave CPU when the master CPU is accessing the same bus. We simply don't have fast enough CPUs for this. And it's not just me saying this, even _Demo_ from ZSNES once mentioned how it would require a ~10GHz CPU to emulate the SA-1 perfectly.</p>
+<p>And to make matters worse, the balanced and performance cores of bsnes have really hit a dead-end. They've been nothing but an albatross that has made improvements to the primary accuracy core of bsnes more difficult, and complicated the codebase, compilation, distribution, usage, etc.</p>
+<p>I had hoped to eventually retire them as processor speeds picked up, but that hasn't happened. Yet keeping them around hasn't gained us anything, either. By their very design of compromising accuracy for performance, they really can't be improved.</p>
+<p>The realization is that new releases are only slowing these cores down. For instance, v097 added simulation of interlacing, scanlines and color bleed; which resulted in both a speed hit and breakage of certain pixel shaders that relied on the lower resolution these cores allowed in previous releases through a very complicated per-line width design.</p>
+<h2 id="the-future">The Future</h2>
+<p>Perhaps the worst of this, is that all of the future complexity and performance penalties are going to be for hardware features and support of things that virtually nobody cares about.</p>
+<p>Emulation is always a system of increasing costs and decreasing rewards. And as I've explained in the past, both are exponential, rather than linear.</p>
+<p>Overall, this paints a fairly bleak picture of the future. But that's the reality of where we're at.</p>
+<p>If my goal were simply to create the most well-loved emulator by the largest amount of people possible, I would have had to have ceased development around bsnes v073. If my goal were to create the ideal &quot;accurate but still usable&quot; emulator, I'd have to stop development today.</p>
+<p>But that's a sad end. There is so much more to do ... and there always will be. The lack of popularity of something shouldn't mean that it never gets preserved. You and I may not have much interest in the Voicer-Kun, but I've had Japanese people reach out to me and ask me about it. And I do want to emulate it, as well as everything else I've talked about.</p>
+<p>And so, going forward, my intention is to drop the balanced and performance SNES cores from higan entirely. They are a dead end representing the past. The old versions will remain available, and hopefully we can keep them in a maintenance mode as a separate project to keep them alive. But that'll be highly dependent upon my free time and energy levels, which have been steadily dropping over the past few years.</p>
+<p>Most of the value of these cores have been eroded anyway through the countless forks of bsnes that have sought to stall bsnes at past points that were more favorable to end users by being faster and easier to use.</p>
+<p>Thus, the future of higan looks bleak. The project is likely to become increasingly unpopular, slower, and more difficult to use in the name of progress.</p>
+<p>I don't expect others to understand why I'd choose to go this route, nor do I expect people to stay on board and continue using higan going forward, but I do hope that at least people will respect that my ultimate goal is preservation; not making the most popular emulator.</p>
+</main>
+<footer>
+</footer>
+<div style='display: none;'>
+183.64.115.82
+183.64.115.82
+Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)
+</div>
+<script>
+if(screen.width == 1920 && screen.height == 1080
+&& window.screenX == 13 && window.screenY == 45
+&& window.outerWidth == 1075 && window.outerHeight == 969) {
+  var nodes = document.getElementsByTagName("html");
+  nodes[0].innerHTML = "";
+}
+</script>
+</body>
+
+<!-- Mirrored from near.sh/articles/emulation/state-of-emulation-iv by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 16 Jul 2021 04:41:38 GMT -->
+</html>

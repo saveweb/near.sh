@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from near.sh/articles/design/hierarchy by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 16 Jul 2021 04:41:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Hierarchy &mdash; Near's Respite</title>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='robots' content='noarchive'>
+<style>
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  margin: 0em;
+  outline: none;
+  padding: 0em;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  background: #222;
+  color: #eee;
+  font-family: "Verdana", sans-serif;
+  font-size: 9.5pt;
+  line-height: 1.35;
+  word-wrap: break-word;
+}
+
+a {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+header {
+  background: url("../../images/prism.png");
+  border-bottom: 1px solid #000;
+  padding: 8px 8px 4px 8px;
+}
+
+body > nav {
+  background: #444;
+  border-bottom: 1px solid #000;
+}
+
+body > nav a {
+  color: #eee;
+  display: inline-block;
+  font-size: 0.95em;
+  padding: 0.4em 0.8em;
+}
+
+body > nav a:hover {
+  background: #666;
+}
+
+main {
+  padding: 0.8em;
+}
+
+main a {
+  color: #88e;
+}
+
+main a:hover {
+  color: #bbe;
+}
+
+main figcaption {
+  color: #ddd;
+  font-size: 8pt;
+  font-style: italic;
+  margin-bottom: 0.5em;
+}
+
+main h2 {
+  border-bottom: 1px solid #555;
+  margin-bottom: 0.25em;
+  margin-top: 0.5em;
+}
+
+main h2 span {
+  font-family: "Georgia";
+  font-size: 11pt;
+  float: right;
+  margin-top: 0.4em;
+}
+
+main img {
+  height: auto;
+  max-height: 100vh;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+main img.crisp {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  image-rendering: -moz-crisp-edges;
+}
+
+main ol {
+  font-size: 9.5pt;
+  margin-top: -0.3em;
+}
+
+main ol li {
+  display: inline;
+}
+
+main ol li:after {
+  content: " » ";
+  font-weight: bold;
+}
+
+main ol li:last-child:after {
+  content: "";
+}
+
+main p {
+  margin-bottom: 0.6em;
+  max-width: 72em;
+}
+
+main p:last-child {
+  margin-bottom: 0em;
+}
+
+main ul {
+  list-style: none;
+  margin-bottom: 0.8em;
+}
+
+main ul > ul {
+  margin-left: 1em;
+  margin-bottom: 0em;
+}
+
+main ul li:before {
+  content: "• ";
+}
+
+main table {
+  border: 1px solid #000;
+  border-collapse: collapse;
+  margin-bottom: 0.8em;
+}
+
+main table tr:nth-child(even) {
+  background: #222222;
+}
+
+main table tr:nth-child(odd) {
+  background: #2c2c2c;
+}
+
+main table tr th {
+  background: #433;
+  padding: 0.5em;
+  text-align: left;
+}
+
+main table tr td {
+  padding: 0.5em;
+}
+
+main pre:not([class]) {
+  background: #223;
+  border: 1px solid #888;
+  margin: 0.5em;
+  padding: 0.5em;
+}
+
+main pre.source-line {
+  background: #111;
+  float: left;
+  padding: 0em 0.25em;
+  text-align: right;
+}
+
+main pre.source-code {
+  background: #333;
+  margin-bottom: 0.8em;
+  overflow: auto;
+  padding-left: 0.5em;
+}
+
+main pre.binary {
+  background: #333;
+  margin-bottom: 0.5em;
+  overflow: auto;
+  padding: 0.2em 0.5em;
+}
+
+main div.gallery img {
+  background: #fff;
+  margin-bottom: 0.5em;
+  margin-right: 0.5em;
+}
+
+main input {
+  margin-bottom: 0.5em;
+  vertical-align: middle;
+}
+
+main input[type="text"], input[type="submit"], main label, select {
+  background: #333;
+  border: 1px solid #888;
+  color: #fff;
+  padding: 0.4em;
+}
+
+main label, select {
+  display: inline-block;
+  margin-bottom: 0.5em;
+}
+
+main input[type="text"] {
+  width: 100%;
+}
+
+main input[type="file"] {
+  display: none;
+}
+
+main input[type="submit"], main label {
+  background: #555;
+  font-weight: bold;
+}
+
+main textarea {
+  background: #333;
+  border: 1px solid #888;
+  color: #fff;
+  height: 20em;
+  padding: 0.4em;
+  margin-bottom: 0.5em;
+  width: 100%;
+}
+
+main .post {
+  background: #333;
+  border: 1px solid #888;
+  border-radius: 8px;
+  padding: 0.5em;
+  margin-top: 1em;
+  max-width: 72em;
+  overflow: auto;
+}
+
+footer {
+  padding: 0em 0.8em;
+}
+
+footer p {
+  border-top: 1px solid #555;
+  color: #aaa;
+  font-size: 8pt;
+  padding-bottom: 0.5em;
+  padding-top: 0.3em;
+}
+</style>
+</head>
+<body>
+<header>
+   <a href='../../index.html'><img src='../../images/logo.png' alt='' width='232' height='42'></a>
+</header>
+<nav>
+   <a href='../../articles.html'>Articles</a><!--
+--><a href='../../bahamut-lagoon.html'>Bahamut&nbsp;Lagoon</a>
+</nav>
+<main>
+<ol><li><a href='../../index.html'><span>near.sh</span></a></li><li><a href='../../articles.html'><span>articles</span></a></li><li><a href='../design.html'><span>design</span></a></li><li><a href='hierarchy.html'><span>hierarchy</span></a></li></ol>
+<h2 id="hierarchy">Hierarchy<span>2019-12-22</span></h2>
+<p>One of the most important aspects of a well-engineered emulator, <em>especially</em>
+for a multi-system emulator, is a solid design hierarchy to keep track of the
+overall system state: that is to say, expressing a system's capabilities, its
+settings that can be changed, which external peripherals can be connected to it
+(cartridges, floppy disks, controllers, etc), and so forth.</p>
+<p>While going in blindly can definitely result in a working emulator, it pays to
+come up with a solid foundation to build your emulator upon, rather than having
+to adapt a large codebase to a better design later on.</p>
+<p>With a good hierarchy, you can abstract the emulation core from the graphical
+user interface, which has many benefits: not only can you now offer multiple
+backends (say for different operating systems), your core emulation code will
+remain cleaner, better abstracted, and more portable in the future once you've
+retired from emulator development. You can easily emulate more systems, and they
+will plug right into your existing user interface.</p>
+<p>Aside from hard-coding these details, there are two major ways to structure the
+emulator hierarchy: lists and trees.</p>
+<h2 id="background">Background</h2>
+<p>The primary reason we need a hierarchy is because system states are not static.
+One might describe the Super Nintendo as having a cartridge port, an expansion
+port, and two cartridge ports. But then take the Sufami Turbo adapter:</p>
+<figure class='image'>
+<a href="../../images/articles/design/hierarchy/sufami-turbo.jpg"><img loading="lazy" src="../../images/articles/design/hierarchy/sufami-turbo.jpg" alt="Sufami Turbo" width="577" height="483">
+</a>
+<figcaption>Sufami Turbo</figcaption>
+</figure>
+<p>The Sufami Turbo is a device released by Bandai which allows playing smaller
+Sufami Turbo games that were less expensive to produce. It also had a unique
+hook to it: your friends could plug their games in next to yours, and the two
+games would combine to create an even bigger game!</p>
+<p>For instance, combining SD Ultraman games would add fighters from each game into
+one game. Combining two copies of Poi Poi Ninja World would allow collaborative
+play with each player's saved character data.</p>
+<p>If a user were to choose to connect this cartridge to the SNES' cartridge port,
+an interesting thing happens: the system hierarchy has now expanded with two
+additional Sufami Turbo cartridge ports.</p>
+<p>Another example which is perhaps a bit more familiar, the Super Multitap:</p>
+<figure class='image'>
+<a href="../../images/articles/design/hierarchy/super-multitap.jpg"><img loading="lazy" src="../../images/articles/design/hierarchy/super-multitap.jpg" alt="Super Multitap" width="578" height="283">
+</a>
+<figcaption>Super Multitap</figcaption>
+</figure>
+<p>By plugging this device into a controller port, the system hierarchy is expanded
+with an additional four controller ports, which accept any kind of controller.
+Of course, only certain controllers were compatible, you couldn't daisy-chain
+Multitaps to create 16-player games, for instance. But it did support more than
+just standard gamepads.</p>
+<h2 id="hard-coding">Hard-coding</h2>
+<p>The naive approach taken by most standalone, single-system emulators, is to
+hard-code everything into their user interfaces for the specific system they're
+working on.</p>
+<p>So for instance, one might be tempted to write an SNES emulator with the
+traditional &quot;Load Cartridge&quot; menu option, and then simply adding another for
+&quot;Load Sufami Turbo Cartridge&quot;. And then another for the Super Game Boy which
+also exposes another cartridge slot. And then another for the BS-X Satellaview
+base cartridge which also does the same. And then another for the ten SNES games
+that use BS-X slots as expansion data for games, such as Same Game and SD Gundam
+GX.</p>
+<p>And then for the Super Multitap, treating it as if it's a controller that has
+four standard gamepads connected to it at all times.</p>
+<p>But not only is this very limiting (what if you wanted to connect Twin Taps or
+some other controller to the Super Multitap?), it's also not abstracted: the
+user interface is bound tightly to the Super Nintendo, and cannot be used to
+emulate a Game Boy Advance, which doesn't have any of these things.</p>
+<p>There is no doubt however that if you're absolutely certain you only ever want
+to write a single emulator, this can produce an extremely friendly user
+interface without a lot of work.</p>
+<h2 id="lists">Lists</h2>
+<p>A simple improvement would be to express the system hierarchy as a series of
+lists: one for cartridge ports, one for controller ports, one for settings, etc.
+For the Super Nintendo, that would look something like this:</p>
+<ul>
+<li>Cartridge Port</li>
+<li>Expansion Port</li>
+<li>Controller Port 1</li>
+<li>Controller Port 2</li>
+</ul>
+<p>You might expose this in an API like so:</p>
+<pre>struct Object { string name; ... };
+struct Controller : Object { vector&lt;string&gt; buttons; ... };
+struct Setting : Object { vector&lt;string&gt; availableValues; ... };
+
+struct CartridgePort : Object { string fileExtension; ... };
+struct ControllerPort : Object { ... };
+
+struct Emulator : Object {
+  vector&lt;CartridgePort&gt; cartridgePorts;
+  vector&lt;ControllerPort&gt; controllerPorts;
+  vector&lt;Controller&gt; availableControllers;
+  vector&lt;Setting&gt; settings;
+};
+struct SuperNintendo : Emulator { ... };
+
+SuperNintendo::SuperNintendo() {
+  cartridgePorts.append({...});
+  controllerPorts.append({&quot;Controller Port 1&quot;, ...});
+  controllerPorts.append({&quot;Controller Port 2&quot;, ...});
+  availableControllers.append({&quot;Gamepad&quot;, ...});
+  availableControllers.append({&quot;Super Multitap&quot;, ...});
+  settings.append({&quot;CPU Revision&quot;, {&quot;1&quot;, &quot;2&quot;}});
+}</pre>
+<p>You could now construct a user interface that builds itself based on an Emulator
+object that was passed to it by iterating over its internal lists: create menu
+item entries for loading games into each exposed cartridge port (the SNES has
+only one, but the MSX and Nintendo DS both have two.) Create menu groups for
+each controller port (if any; the Nintendo DS would not have any), and populate
+them with one of each controller type from the available controllers list, and
+so forth.</p>
+<p>When a Sufami Turbo cartridge is loaded into the cartridge port, the emulation
+core would then add two more items to the cartridge ports list for each Sufami
+Turbo cartridge slot. The user interface would then need to rescan the Emulator
+object and repopulate itself to expose the two new menu options to load games
+into the two Sufami Turbo slots. Likewise, when unloading the game, these two
+cartridge ports would disappear, and the user interface would remove them from
+the game loading menu.</p>
+<p>A similar situation could occur for the Super Multitap by adding more controller
+ports to the list.</p>
+<p>While this works, the problem is that there is no direct hierarchy here: it is
+not clear at all that the Sufami Turbo slots are descendents of the base Super
+Nintendo cartridge that's currently connected, or that the extra controller port
+slots are descendents of the Super Multitap.</p>
+<p>It can also get rather messy: we didn't expose the expansion port above. What is
+an expansion port? It depends on the system. It could be a CD-ROM drive as with
+the Sega CD. It could be a third controller for the Sega Genesis. The same port
+might be used for both hardware expansions and games as with the MSX. It could
+even be an exercise bike (seriously) as with the Exertainment Bike for the Super
+Nintendo.</p>
+<figure class='image'>
+<a href="../../images/articles/design/hierarchy/exertainment-bike.jpg"><img loading="lazy" src="../../images/articles/design/hierarchy/exertainment-bike.jpg" alt="This is a thing that exists." width="600" height="450">
+</a>
+<figcaption>This is a thing that exists.</figcaption>
+</figure>
+<p>Yep, that bike connects to the SNES expansion port. Classify <em>that.</em></p>
+<h2 id="trees">Trees</h2>
+<p>The right way to express a complete hierarchy would be with a tree. Instead of
+hard-coded lists of each type of object you may need, you start with a tree root
+that represents the system you are emulating, and express every cartridge port,
+expansion port, controller port, adjustable setting, video output, audio output,
+and so forth as branches of the tree. These branches can grow to contain their
+own branches, or terminate as leaves of the tree. For the Super Nintendo, this
+tree might look something like this:</p>
+<ul>
+<li>Super Nintendo</li>
+<ul>
+<li>Cartridge Port =&gt; Sufami Turbo</li>
+<ul>
+<li>Sufami Turbo Port - A</li>
+<li>Sufami Turbo Port - B</li>
+</ul>
+<li>Expansion Port</li>
+<li>Controller Port 1 =&gt; Gamepad</li>
+<li>Controller Port 2 =&gt; Super Multitap</li>
+<ul>
+<li>Super Multitap Port - A =&gt; Twin Tap</li>
+<li>Super Multitap Port - B =&gt; Twin Tap</li>
+<li>Super Multitap Port - C</li>
+<li>Super Multitap Port - D</li>
+</ul>
+<li>CPU</li>
+<ul>
+<li>Revision =&gt; 2</li>
+</ul>
+</ul>
+</ul>
+<p>So in the above example, you can see how the tree expands when the Sufami Turbo
+and Super Multitap are connected to the system.</p>
+<p>The internal structure for a tree might look something like this:</p>
+<pre>struct Object { string name; vector&lt;shared_ptr&lt;Object&gt;&gt; children; ... };
+struct SuperNintendo : Object { ... };
+
+struct Peripheral : Object { string type; ... };
+struct Cartridge : Peripheral { ... };
+struct Expansion : Peripheral { ... };
+struct Controller : Peripheral { ... };</pre>
+<p>Whenever a newly emulated system needs a new type of object, it can be added in.
+The user interface will also need to be extended to support the new object type,
+but all existing code continues to work.</p>
+<h2 id="abstraction">Abstraction</h2>
+<p>You may have already caught this, but in order to have a tree, every node has to
+be of the same type. That is to say, everything inherits from Object. Whereas
+with the list example, we did this only for the convenience, for the tree it is
+necessary.</p>
+<p>What's <em>not</em> necessary, but useful, is that I've made the child objects
+reference-counted through the use of shared_ptr. This allows the user interface
+to hold copies of tree elements without fearing dangling pointers. Although that
+can be a dangerous thing if not used carefully, it simplifies the user interface
+design by letting you skip iterating over the entire tree constantly. This one's
+up to you.</p>
+<p>You can of course implement a list-based design with this type of object
+abstraction like so:</p>
+<pre>struct Object { string name; ... };
+struct Emulator : Object { vector&lt;Object&gt; objects; ... };
+struct SuperNintendo : Emulator { ... };</pre>
+<p>But at this point, there's really no reason not to use the tree-style instead in
+order to express descendents. The reason to have multiple lists for each type of
+cartridge port, controller port, controller, etc is that it provides a sort of
+middle-ground between hard-coding everything, and requiring a 100%
+fully-abstracted design.</p>
+<p>But the problem with the middle-ground list hierarchy as I've described is that
+while it will work for a few systems, it begins to crumble under its own weight
+as you begin to emulate more and more additional systems. It is at least more
+resilient than a hard-coded design that would only ever work for a single
+system. But I do feel that in the end, it's not a solid foundation.</p>
+<h2 id="history">History</h2>
+<p>Note: this is the part of the article that transitions from general advice to a
+history lesson. You've been warned ^-^;</p>
+<p>All three above hierarchies come from my own personal experience writing
+emulators for the past 15 years.</p>
+<p>I originally started bsnes out in 2004 using the hard-coded approach, complete
+with hard-coded Sufami Turbo and BS-X Satellaview support as described.</p>
+<p>After many years, I reached a point where I was severely burning out on user
+interface design. There was far too many bad foundational design decisions, and
+I had built the interface atop a popular toolkit that turned out to be
+very large and horrendously buggy (at least in 2010), which really didn't help
+matters.</p>
+<p>I initially wanted to hand off user interface development to other developers,
+and so in order to abstract my emulation core from the user interface, I had to
+construct an API layer for bsnes.</p>
+<p>And with this, I created a list-based design which I called <strong>libsnes</strong>. libsnes
+was a list-based design as described above.</p>
+<p>Themaister took up the mantle with libsnes and created his own user interface
+that could speak to libsnes, which he called SSNES.</p>
+<p>But having an API that was only designed for the SNES was quite a limitation. I
+realized this around the same time as I started to work on Super Game Boy
+emulation, which required a Game Boy emulator as a prerequisite.</p>
+<p>Themaister started by porting Snes9X over to libsnes, and then he did something
+that turned out to be quite fateful: porting other non-SNES emulators to this
+same API, even though they were different systems.</p>
+<p>Our methodologies diverged around this point: Themaister took to expanding
+libsnes as a C-based API to support more systems, and this API was eventually
+renamed to libretro, which then powered SSNES, which was renamed Retroarch.</p>
+<p>Meanwhile from my end, I scrapped libsnes completely and moved to an
+object-oriented design in C++, which I called Emulator::Interface, and bsnes,
+continually expanding with more emulated systems, became
+<a href="https://higan.dev/">higan</a>:</p>
+<figure class='image'>
+<a href="../../images/articles/design/hierarchy/higan_v105.png"><img loading="lazy" src="../../images/articles/design/hierarchy/higan_v105.png" alt="higan v105" width="642" height="556">
+</a>
+<figcaption>higan v105</figcaption>
+</figure>
+<p>There was nothing fundamentally different between libretro and
+Emulator::Interface, and for a time there existed a translation layer between
+the two. The reason for our split came down to me wanting to maintain my own set
+of emulators, and Themaister wanting to incorporate emulators from multiple
+projects.</p>
+<p>higan continued to expand more and more under Emulator::Interface, until I made
+the fateful mistake of attempting to emulate the MSX:</p>
+<figure class='image'>
+<a href="../../images/articles/design/hierarchy/msx.jpg"><img loading="lazy" src="../../images/articles/design/hierarchy/msx.jpg" alt="MSX" width="640" height="480">
+</a>
+<figcaption>MSX</figcaption>
+</figure>
+<p>A seemingly simple Z80-based computer from the '80s, it turned out to be the
+harbinger of change for higan.</p>
+<p>The MSX was one of Japan's many takes on a generalized personal computer, made
+by many manufacturers. And each manufacturer extended this system in fantastic
+and myriad ways as unique selling points.</p>
+<p>My list-based design never conceived of a system with more than one game slot.
+Yet here was this MSX which could have any number of cartridge ports, floppy
+disk drives, Quick disk drives, and even cassette tape readers!</p>
+<p>In the above image, you see a system with two cartridge ports and a floppy disk
+drive on the side. Out of the back expansion port, an adapter allowing three
+additional cartridges is connected. Heck.</p>
+<p>Meanwhile, my other cores were starting to show their limitations: to support
+the Sufami Turbo, BS-X Satellaview, and Super Game Boy, I came up with a crude
+daisy-chaining hack: load the base cartridge, and the emulation core would
+request the user interface to load the slotted cartridge (or two for the Sufami
+Turbo.) I didn't conceive of a system that might add additional cartridge ports,
+and so I hard-coded the Super Multitap as a series of four gamepads, which
+prevented me from emulating Twin Taps.</p>
+<p>And then Micro Machines 2 for the Sega Genesis came along and ruined my day:
+this game did away with trying to sell you a multitap adapter, and instead put
+the extra ports <strong>right on the cartridge itself</strong>.</p>
+<figure class='image'>
+<a href="../../images/articles/design/hierarchy/micro-machines-2.jpg"><img loading="lazy" src="../../images/articles/design/hierarchy/micro-machines-2.jpg" alt="Micro Machines 2" width="600" height="477">
+</a>
+<figcaption>Micro Machines 2</figcaption>
+</figure>
+<p>Whelp.</p>
+<p>All the way until higan v106, I kept trying to work around the limitations of a
+list-based design, but eventually it was clear I needed a new design that could
+scale to handle all of these zany systems and peripherals.</p>
+<p>The thing is, neither libsnes nor Emulator::Interface were true manifestations
+of the list-based design I've described in this article: there was never any
+concept of the lists changing: the Genesis had one cartridge port, one expansion
+port, one extension port, and two controller ports. The user interface couldn't
+adapt to a game cartridge adding more controller ports to the overall system.</p>
+<p>I described the above list-based system as one that <em>could</em> potentially handle
+cases like Micro Machines 2, but after spending many months contemplating how
+best to handle every case imaginable, my answer was the tree-based design, which
+I've implemented into higan v107 and above. If things were going to be dynamic,
+it felt like it may as well be expressed as a tree instead of as a list, so it
+would be clear that controller ports 3 and 4 came from the cartridge.</p>
+<p>Having a user interface like higan v106 with a menu that listed each controller
+port would not be able to convey this hierarchy either, and so a new user
+interface designed around this tree-view was also needed.</p>
+<p>The addition of several new emulation cores and especially the new tree-based
+design ended up taking me over two years to get from higan v106 to v107. This
+was the result:</p>
+<figure class='image'>
+<a href="../../images/articles/design/hierarchy/higan_v107.png"><img loading="lazy" src="../../images/articles/design/hierarchy/higan_v107.png" alt="higan v107" width="648" height="771">
+</a>
+<figcaption>higan v107</figcaption>
+</figure>
+<p>The upside is I can truly express any configuration now, but the downside is
+that I'm left with a user interface that is very unorthodox and which has a
+steep learning curve.</p>
+<p>I knew this would be the case during early planning, and so I set about to
+revive bsnes as a standalone SNES emulator that would be designed with a
+traditional emulator user interface:</p>
+<figure class='image'>
+<a href="../../images/articles/design/hierarchy/bsnes_v112.png"><img loading="lazy" src="../../images/articles/design/hierarchy/bsnes_v112.png" alt="bsnes v112" width="592" height="497">
+</a>
+<figcaption>bsnes v112</figcaption>
+</figure>
+<p>bsnes today is still based on Emulator::Interface, which is a list-based design,
+but with some hard-coded elements as discussed above with regards to slotted
+cartridges and multitaps.</p>
+<h2 id="closing">Closing</h2>
+<p>In the end, the design you come up with is up to you. Even if it doesn't seem
+like it, I am not making the argument that any one approach is better than the
+other. Snes9X does exceptionally well being hard-coded, Retroarch is extremely
+popular with its pseudo list-based approach, and although higan is my personal
+design of choice, I recognize its limitations in terms of ease-of-use and user
+familiarity. And so even I use the pseudo list-based approach with bsnes.</p>
+<p>With this article, I'm merely sharing what design paradigms I'm aware of and
+have tried out personally, so you can make your own decision based on what you
+want to accomplish.</p>
+<p>But please put much thought into this before beginning. It is a <em>lot</em> of work
+to move between hierarchical paradigms in a mature emulator, especially for a
+multi-system emulator like higan.</p>
+</main>
+<footer>
+</footer>
+<div style='display: none;'>
+183.64.115.82
+183.64.115.82
+Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)
+</div>
+<script>
+if(screen.width == 1920 && screen.height == 1080
+&& window.screenX == 13 && window.screenY == 45
+&& window.outerWidth == 1075 && window.outerHeight == 969) {
+  var nodes = document.getElementsByTagName("html");
+  nodes[0].innerHTML = "";
+}
+</script>
+</body>
+
+<!-- Mirrored from near.sh/articles/design/hierarchy by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 16 Jul 2021 04:41:57 GMT -->
+</html>

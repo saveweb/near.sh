@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from near.sh/articles/video/color-emulation by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 16 Jul 2021 04:41:48 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Color Emulation &mdash; Near's Respite</title>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='robots' content='noarchive'>
+<style>
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  margin: 0em;
+  outline: none;
+  padding: 0em;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  background: #222;
+  color: #eee;
+  font-family: "Verdana", sans-serif;
+  font-size: 9.5pt;
+  line-height: 1.35;
+  word-wrap: break-word;
+}
+
+a {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+header {
+  background: url("../../images/prism.png");
+  border-bottom: 1px solid #000;
+  padding: 8px 8px 4px 8px;
+}
+
+body > nav {
+  background: #444;
+  border-bottom: 1px solid #000;
+}
+
+body > nav a {
+  color: #eee;
+  display: inline-block;
+  font-size: 0.95em;
+  padding: 0.4em 0.8em;
+}
+
+body > nav a:hover {
+  background: #666;
+}
+
+main {
+  padding: 0.8em;
+}
+
+main a {
+  color: #88e;
+}
+
+main a:hover {
+  color: #bbe;
+}
+
+main figcaption {
+  color: #ddd;
+  font-size: 8pt;
+  font-style: italic;
+  margin-bottom: 0.5em;
+}
+
+main h2 {
+  border-bottom: 1px solid #555;
+  margin-bottom: 0.25em;
+  margin-top: 0.5em;
+}
+
+main h2 span {
+  font-family: "Georgia";
+  font-size: 11pt;
+  float: right;
+  margin-top: 0.4em;
+}
+
+main img {
+  height: auto;
+  max-height: 100vh;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+main img.crisp {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  image-rendering: -moz-crisp-edges;
+}
+
+main ol {
+  font-size: 9.5pt;
+  margin-top: -0.3em;
+}
+
+main ol li {
+  display: inline;
+}
+
+main ol li:after {
+  content: " » ";
+  font-weight: bold;
+}
+
+main ol li:last-child:after {
+  content: "";
+}
+
+main p {
+  margin-bottom: 0.6em;
+  max-width: 72em;
+}
+
+main p:last-child {
+  margin-bottom: 0em;
+}
+
+main ul {
+  list-style: none;
+  margin-bottom: 0.8em;
+}
+
+main ul > ul {
+  margin-left: 1em;
+  margin-bottom: 0em;
+}
+
+main ul li:before {
+  content: "• ";
+}
+
+main table {
+  border: 1px solid #000;
+  border-collapse: collapse;
+  margin-bottom: 0.8em;
+}
+
+main table tr:nth-child(even) {
+  background: #222222;
+}
+
+main table tr:nth-child(odd) {
+  background: #2c2c2c;
+}
+
+main table tr th {
+  background: #433;
+  padding: 0.5em;
+  text-align: left;
+}
+
+main table tr td {
+  padding: 0.5em;
+}
+
+main pre:not([class]) {
+  background: #223;
+  border: 1px solid #888;
+  margin: 0.5em;
+  padding: 0.5em;
+}
+
+main pre.source-line {
+  background: #111;
+  float: left;
+  padding: 0em 0.25em;
+  text-align: right;
+}
+
+main pre.source-code {
+  background: #333;
+  margin-bottom: 0.8em;
+  overflow: auto;
+  padding-left: 0.5em;
+}
+
+main pre.binary {
+  background: #333;
+  margin-bottom: 0.5em;
+  overflow: auto;
+  padding: 0.2em 0.5em;
+}
+
+main div.gallery img {
+  background: #fff;
+  margin-bottom: 0.5em;
+  margin-right: 0.5em;
+}
+
+main input {
+  margin-bottom: 0.5em;
+  vertical-align: middle;
+}
+
+main input[type="text"], input[type="submit"], main label, select {
+  background: #333;
+  border: 1px solid #888;
+  color: #fff;
+  padding: 0.4em;
+}
+
+main label, select {
+  display: inline-block;
+  margin-bottom: 0.5em;
+}
+
+main input[type="text"] {
+  width: 100%;
+}
+
+main input[type="file"] {
+  display: none;
+}
+
+main input[type="submit"], main label {
+  background: #555;
+  font-weight: bold;
+}
+
+main textarea {
+  background: #333;
+  border: 1px solid #888;
+  color: #fff;
+  height: 20em;
+  padding: 0.4em;
+  margin-bottom: 0.5em;
+  width: 100%;
+}
+
+main .post {
+  background: #333;
+  border: 1px solid #888;
+  border-radius: 8px;
+  padding: 0.5em;
+  margin-top: 1em;
+  max-width: 72em;
+  overflow: auto;
+}
+
+footer {
+  padding: 0em 0.8em;
+}
+
+footer p {
+  border-top: 1px solid #555;
+  color: #aaa;
+  font-size: 8pt;
+  padding-bottom: 0.5em;
+  padding-top: 0.3em;
+}
+</style>
+</head>
+<body>
+<header>
+   <a href='../../index.html'><img src='../../images/logo.png' alt='' width='232' height='42'></a>
+</header>
+<nav>
+   <a href='../../articles.html'>Articles</a><!--
+--><a href='../../bahamut-lagoon.html'>Bahamut&nbsp;Lagoon</a>
+</nav>
+<main>
+<ol><li><a href='../../index.html'><span>near.sh</span></a></li><li><a href='../../articles.html'><span>articles</span></a></li><li><a href='../video.html'><span>video</span></a></li><li><a href='color-emulation.html'><span>color-emulation</span></a></li></ol>
+<h2 id="color-emulation">Color Emulation<span>2019-09-12</span></h2>
+<p>Nearly all retro game systems generate colors in some variant of RGB encoding.
+But the raw pixel colors are often designed for very different screens than
+those that emulators typically run on. In this article, I'll walk through the
+importance of color emulation, and provide some example code and screenshots.</p>
+<p>The most common target display type these days are LCD panels. These are known
+for having very poor black levels. The distinction between TN, PVA, and IPS
+does not factor too much into this.</p>
+<p>Sometimes CRTs are used by enthusiasts, and OLED screens, especially on phones
+and tablets, are slowly becoming a thing. But for this article, the focus will
+be primarily on LCDs, though this technique is important for all display types.</p>
+<h2 id="color-precision">Color precision</h2>
+<p>The first detail is that most computer monitors run in 24-bit color mode, which
+provides 8-bits of color detail for the red, green, and blue channels. But most
+older game systems do not specify colors in that precision.</p>
+<p>For instance, the Sega Genesis encodes 9-bit colors, giving 3-bits per channel.</p>
+<p>The most naive emulator might simply place the 3-bits into the highest 3-bits of
+the output, leaving the low 5-bits clear, but this would cause whites to become
+slightly gray.</p>
+<p>Example:</p>
+<pre>000 000 000 -&gt; 000'00000 000'00000 000'00000
+111 111 111 -&gt; 111'00000 111'00000 111'00000</pre>
+<p><span style='display: inline-block; width: 64px; height: 64px; background: #e0e0e0'></span><span style='display: inline-block; width: 64px; height: 64px; background: #ffffff'></span></p>
+<p>If ones were instead filled in, then blacks would become too light.</p>
+<p>Example:</p>
+<pre>000 000 000 -&gt; 000'11111 000'11111 000'11111
+111 111 111 -&gt; 111'11111 111'11111 111'11111</pre>
+<p><span style='display: inline-block; width: 64px; height: 64px; background: #1f1f1f'>a</span><span style='display: inline-block; width: 64px; height: 64px; background: #000000'>a</span></p>
+<p>The solution to this is that the source bits should repeat to fill in all of the
+target bits.</p>
+<p>Example:</p>
+<pre>000 -&gt; 000 000 00...
+010 -&gt; 010 010 01...
+011 -&gt; 011 011 01...
+111 -&gt; 111 111 11...</pre>
+<p>In code form:</p>
+<pre>uint8 red = r &lt;&lt; 5 | r &lt;&lt; 2 | r &gt;&gt; 1
+//rrr00000 | 000rrr00 | 000000rr -&gt; rrrrrrrr</pre>
+<h2 id="screen-emulation">Screen emulation</h2>
+<p>Retro game systems weren't designed to run on modern PC LCD monitors. Typically
+home consoles were designed for CRTs, and portable consoles using much older,
+much less precise LCD panels.</p>
+<p>Emulating specific screen artifacts such as screen curvature, scanlines, color
+bleed, interframe blending, aperture grilles, etc are beyond the scope of this
+article: we are focusing only on the individual pixel colors for now.</p>
+<h2 id="pc-monitors">PC monitors</h2>
+<p>There's a fairly wide range of colors on existing monitors, as few are
+professionally calibrated to any kind of standard like SRGB, but in general the
+best we can do is to attempt to emulate colors as if one were using a properly
+calibrated SRGB monitor.</p>
+<h2 id="crt-emulation-super-nintendo">CRT emulation: Super Nintendo</h2>
+<p>The main difference between CRTs and PC LCD monitors is the substantially
+reduced black levels, which can only be compensated for slightly through the use
+of a gamma curve:</p>
+<pre>//SNES colors are in RGB555 format, so there are 32 levels for each channel
+static const uint8 gammaRamp[32] = {
+  0x00, 0x01, 0x03, 0x06, 0x0a, 0x0f, 0x15, 0x1c,
+  0x24, 0x2d, 0x37, 0x42, 0x4e, 0x5b, 0x69, 0x78,
+  0x88, 0x90, 0x98, 0xa0, 0xa8, 0xb0, 0xb8, 0xc0,
+  0xc8, 0xd0, 0xd8, 0xe0, 0xe8, 0xf0, 0xf8, 0xff,
+};</pre>
+<p>Originally, this table comes from Overload of Super Sleuth / Kindred fame. What
+it does is darken the lower half of the color palette, while leaving the upper
+half of the palette alone.</p>
+<p>The effect on the image output from emulation is striking: the left is the
+original, and the right is with the gamma ramp applied:</p>
+<p><a href="../../images/articles/video/color-emulation/1.png"><img loading="lazy" src="../../images/articles/video/color-emulation/1.png" alt="Zelda 3 - indoors - no color correction"></a>
+<a href="../../images/articles/video/color-emulation/2.png"><img loading="lazy" src="../../images/articles/video/color-emulation/2.png" alt="Zelda 3 - indoors - with color correction"></a></p>
+<p><a href="../../images/articles/video/color-emulation/3.png"><img loading="lazy" src="../../images/articles/video/color-emulation/3.png" alt="Zelda 3 - outdoors - no color correction"></a>
+<a href="../../images/articles/video/color-emulation/4.png"><img loading="lazy" src="../../images/articles/video/color-emulation/4.png" alt="Zelda 3 - outdoors - with color correction"></a></p>
+<h2 id="lcd-emulation-game-boy-advance">LCD emulation: Game Boy Advance</h2>
+<p>The Game Boy Advance has one of the worst LCD screens, with colors that are
+completely washed out. Clever developers found that by greatly exaggerating the
+colors, they could produce better results on the real hardware.</p>
+<p>Of course, if you use those colors on a standard PC monitor, the result is a
+technicolor nightmare. Thankfully, we can compensate for this as well to produce
+rather natural colors:</p>
+<pre>double lcdGamma = 4.0, outGamma = 2.2;
+double lb = pow(B / 31.0, lcdGamma);
+double lg = pow(G / 31.0, lcdGamma);
+double lr = pow(R / 31.0, lcdGamma);
+r = pow((  0 * lb +  50 * lg + 255 * lr) / 255, 1 / outGamma) * (0xffff * 255 / 280);
+g = pow(( 30 * lb + 230 * lg +  10 * lr) / 255, 1 / outGamma) * (0xffff * 255 / 280);
+b = pow((220 * lb +  10 * lg +  50 * lr) / 255, 1 / outGamma) * (0xffff * 255 / 280);</pre>
+<p>This bit of code is courtesy of Talarubi.</p>
+<p>Far more dramatic than the CRT example, the left is the original, and the right
+is the color-corrected version:</p>
+<p><a href="../../images/articles/video/color-emulation/5.png"><img loading="lazy" src="../../images/articles/video/color-emulation/5.png" alt="Golden Sun - no color correction"></a></p>
+<p><a href="../../images/articles/video/color-emulation/6.png"><img loading="lazy" src="../../images/articles/video/color-emulation/6.png" alt="Golden Sun - with color correction"></a></p>
+<h2 id="lcd-emulation-game-boy-color">LCD emulation: Game Boy Color</h2>
+<p>The Game Boy Color's screen was surprisingly better at color reproduction, and
+the result was only a slight bit of washing out of the colors.</p>
+<p>An algorithm that is quite popular with Game Boy Color emulators is as follows:</p>
+<pre>R = (r * 26 + g *  4 + b *  2);
+G = (         g * 24 + b *  8);
+B = (r *  6 + g *  4 + b * 22);
+R = min(960, R) &gt;&gt; 2;
+G = min(960, G) &gt;&gt; 2;
+B = min(960, B) &gt;&gt; 2;</pre>
+<p>Regrettably, I do not know who devised this algorithm. If you know, please
+contact me so that I can add proper accreditation here!</p>
+<p>As before, the original is on the left, and the color-corrected version is on
+the right:</p>
+<p><a href="../../images/articles/video/color-emulation/7.png"><img loading="lazy" src="../../images/articles/video/color-emulation/7.png" alt="SMT White Book - no color correction"></a>
+<a href="../../images/articles/video/color-emulation/8.png"><img loading="lazy" src="../../images/articles/video/color-emulation/8.png" alt="SMT White Book - with color correction"></a></p>
+<p>This example was chosen specifically because even though the former looks more
+vibrant and preferrable, if you look closely, you can see a checkerboard pattern
+around the character sprite that is brighter than the background.</p>
+<p>This was likely an oversight on the part of the developers, as on a real Game
+Boy Color, whites are washed out and the two differing color shades blur
+together almost seamlessly.</p>
+<h2 id="closing">Closing</h2>
+<p>There are many more systems that currently lack good color emulation filters.
+They're very difficult to fine-tune. Most notably, we don't have good filters
+for approximating the colors of the WonderSwan and Neo Geo Pocket at the time of
+writing.</p>
+<p>Handhelds are even trickier on account of often missing backlighting (or even
+frontlighting in some cases!), and system controls for adjusting the contrast
+ratio resulting in there not being any one true &quot;color&quot; value for any given RGB
+value.</p>
+<p>A particularly interesting corner case is the WonderSwan Color, which has a
+software-assignable flag to provide a stronger contrast on the image output.
+It's currently not known how to emulate that precisely, or if we even really
+can.</p>
+<p>Color emulation is definitely an area that could use more attention, so if
+you're an expert with math and analyzing colors, it would be a great place to
+get involved in the emulation scene with!</p>
+</main>
+<footer>
+</footer>
+<div style='display: none;'>
+183.64.115.82
+183.64.115.82
+Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)
+</div>
+<script>
+if(screen.width == 1920 && screen.height == 1080
+&& window.screenX == 13 && window.screenY == 45
+&& window.outerWidth == 1075 && window.outerHeight == 969) {
+  var nodes = document.getElementsByTagName("html");
+  nodes[0].innerHTML = "";
+}
+</script>
+</body>
+
+<!-- Mirrored from near.sh/articles/video/color-emulation by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 16 Jul 2021 04:41:51 GMT -->
+</html>

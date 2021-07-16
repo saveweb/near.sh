@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from near.sh/articles/audio/dynamic-rate-control by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 16 Jul 2021 04:41:51 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Dynamic Rate Control &mdash; Near's Respite</title>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='robots' content='noarchive'>
+<style>
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  margin: 0em;
+  outline: none;
+  padding: 0em;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  background: #222;
+  color: #eee;
+  font-family: "Verdana", sans-serif;
+  font-size: 9.5pt;
+  line-height: 1.35;
+  word-wrap: break-word;
+}
+
+a {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+header {
+  background: url("../../images/prism.png");
+  border-bottom: 1px solid #000;
+  padding: 8px 8px 4px 8px;
+}
+
+body > nav {
+  background: #444;
+  border-bottom: 1px solid #000;
+}
+
+body > nav a {
+  color: #eee;
+  display: inline-block;
+  font-size: 0.95em;
+  padding: 0.4em 0.8em;
+}
+
+body > nav a:hover {
+  background: #666;
+}
+
+main {
+  padding: 0.8em;
+}
+
+main a {
+  color: #88e;
+}
+
+main a:hover {
+  color: #bbe;
+}
+
+main figcaption {
+  color: #ddd;
+  font-size: 8pt;
+  font-style: italic;
+  margin-bottom: 0.5em;
+}
+
+main h2 {
+  border-bottom: 1px solid #555;
+  margin-bottom: 0.25em;
+  margin-top: 0.5em;
+}
+
+main h2 span {
+  font-family: "Georgia";
+  font-size: 11pt;
+  float: right;
+  margin-top: 0.4em;
+}
+
+main img {
+  height: auto;
+  max-height: 100vh;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+main img.crisp {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  image-rendering: -moz-crisp-edges;
+}
+
+main ol {
+  font-size: 9.5pt;
+  margin-top: -0.3em;
+}
+
+main ol li {
+  display: inline;
+}
+
+main ol li:after {
+  content: " » ";
+  font-weight: bold;
+}
+
+main ol li:last-child:after {
+  content: "";
+}
+
+main p {
+  margin-bottom: 0.6em;
+  max-width: 72em;
+}
+
+main p:last-child {
+  margin-bottom: 0em;
+}
+
+main ul {
+  list-style: none;
+  margin-bottom: 0.8em;
+}
+
+main ul > ul {
+  margin-left: 1em;
+  margin-bottom: 0em;
+}
+
+main ul li:before {
+  content: "• ";
+}
+
+main table {
+  border: 1px solid #000;
+  border-collapse: collapse;
+  margin-bottom: 0.8em;
+}
+
+main table tr:nth-child(even) {
+  background: #222222;
+}
+
+main table tr:nth-child(odd) {
+  background: #2c2c2c;
+}
+
+main table tr th {
+  background: #433;
+  padding: 0.5em;
+  text-align: left;
+}
+
+main table tr td {
+  padding: 0.5em;
+}
+
+main pre:not([class]) {
+  background: #223;
+  border: 1px solid #888;
+  margin: 0.5em;
+  padding: 0.5em;
+}
+
+main pre.source-line {
+  background: #111;
+  float: left;
+  padding: 0em 0.25em;
+  text-align: right;
+}
+
+main pre.source-code {
+  background: #333;
+  margin-bottom: 0.8em;
+  overflow: auto;
+  padding-left: 0.5em;
+}
+
+main pre.binary {
+  background: #333;
+  margin-bottom: 0.5em;
+  overflow: auto;
+  padding: 0.2em 0.5em;
+}
+
+main div.gallery img {
+  background: #fff;
+  margin-bottom: 0.5em;
+  margin-right: 0.5em;
+}
+
+main input {
+  margin-bottom: 0.5em;
+  vertical-align: middle;
+}
+
+main input[type="text"], input[type="submit"], main label, select {
+  background: #333;
+  border: 1px solid #888;
+  color: #fff;
+  padding: 0.4em;
+}
+
+main label, select {
+  display: inline-block;
+  margin-bottom: 0.5em;
+}
+
+main input[type="text"] {
+  width: 100%;
+}
+
+main input[type="file"] {
+  display: none;
+}
+
+main input[type="submit"], main label {
+  background: #555;
+  font-weight: bold;
+}
+
+main textarea {
+  background: #333;
+  border: 1px solid #888;
+  color: #fff;
+  height: 20em;
+  padding: 0.4em;
+  margin-bottom: 0.5em;
+  width: 100%;
+}
+
+main .post {
+  background: #333;
+  border: 1px solid #888;
+  border-radius: 8px;
+  padding: 0.5em;
+  margin-top: 1em;
+  max-width: 72em;
+  overflow: auto;
+}
+
+footer {
+  padding: 0em 0.8em;
+}
+
+footer p {
+  border-top: 1px solid #555;
+  color: #aaa;
+  font-size: 8pt;
+  padding-bottom: 0.5em;
+  padding-top: 0.3em;
+}
+</style>
+</head>
+<body>
+<header>
+   <a href='../../index.html'><img src='../../images/logo.png' alt='' width='232' height='42'></a>
+</header>
+<nav>
+   <a href='../../articles.html'>Articles</a><!--
+--><a href='../../bahamut-lagoon.html'>Bahamut&nbsp;Lagoon</a>
+</nav>
+<main>
+<ol><li><a href='../../index.html'><span>near.sh</span></a></li><li><a href='../../articles.html'><span>articles</span></a></li><li><a href='../audio.html'><span>audio</span></a></li><li><a href='dynamic-rate-control.html'><span>dynamic-rate-control</span></a></li></ol>
+<h2 id="dynamic-rate-control">Dynamic Rate Control<span>2019-10-01</span></h2>
+<p>When running a native game directly on your PC, video can be synchronized to the
+vertical retrace, and entire audio tracks can be placed into memory to play on
+their own. Sound effects are triggered as needed. The result is a seamless
+experience.</p>
+<p>But when it comes to emulation, this becomes much more difficult. Unlike with PC
+games, we don't know the entire audio track in advance, and so we have to stream
+samples as they are generated under emulation.</p>
+<p>In this article, I'll dive into why that is, and one technique that can address
+the problem.</p>
+<h2 id="cycle-timing">Cycle Timing</h2>
+<p>Emulating retro video game systems is difficult due to the sheer sizes of the
+game libraries. With thousands of titles per system, you can bet that at least a
+few will break if the timing is off by even a little. That is, if the emulation
+runs a touch too fast or too slow.</p>
+<p>With rare exception, in order to reach 100% compatibility, an emulator for older
+systems must be cycle accurate.</p>
+<p>This means that the original video frequency (rate of frames rendered per
+second) and audio frequency (rate of samples played per second) must be exactly
+the same as the original hardware: at least, as far as the emulated environment
+can observe.</p>
+<p>But in order for an emulator to produce smooth video with no tearing or
+stuttering, and smooth audio with no crackling or popping, the ratios of
+frequencies must be an exact match if they are static. Which is, regrettably,
+just not possible, as I'll explain.</p>
+<h2 id="frequencies-and-oscillators">Frequencies and Oscillators</h2>
+<p>Unfortunately, these frequencies are not simple numbers. You'll often find tech
+specs that will state information such as the Super Nintendo having a 60hz video
+refresh rate, and a 32KHz audio sampling rate in the NTSC region. But that is
+not exactly true.</p>
+<p>The video and audio frequencies are based on the underlying oscillator
+frequencies. An oscillator can be a quartz crystal clock or a ceramic resonator.
+I'll delve into the differences later.</p>
+<p>The SNES NTSC CPU frequency is <code>315 / 88 * 6000000hz</code>, or approximately
+~21.477MHz.</p>
+<p>The SNES APU frequency is <code>32000 * 768hz</code>, or approximately ~24.576MHz.</p>
+<p>The CPU frequency is based around the NTSC color subcarrier, which is part of
+how the SNES video chipset (PPU) can render an image onto NTSC CRT monitors.</p>
+<p>One scanline on the SNES takes 1364 clock cycles, and one frame takes 262
+scanlines. So we can thus derive the SNES video refresh rate as:
+<code>315 / 88 * 6000000 / 1364 / 262</code>, or 60.098477561hz. (I am simplifying a
+touch by omitting one detail regarding a missing 4hz period for NTSC color
+subcarrier shifting for the sake of simplicity here.)</p>
+<p>One sample on the SNES takes 768 clock cycles, which gives us:
+<code>24576000 / 768</code>, or 32000hz.</p>
+<h2 id="dynamic-video-rates">Dynamic Video Rates</h2>
+<p>... only the SNES refresh rate isn't quite so simple: when enabling interlacing,
+an extra scanline is inserted into odd frames, to provide 525 scanlines every
+two fields.</p>
+<p>So that is <code>315 / 88 * 6000000 / 1364 / 525 * 2</code>, or 59.9840042665hz.</p>
+<p>One might suspect that means there are two refresh rates to worry about, but
+unfortunately the reality is more complex: there is nothing stopping a game,
+other than a lack of reason, from toggling interlacing on and off constantly
+within the same second of time. This ends up producing effective video
+frequencies that can range anywhere from ~59.98hz to ~60.09hz.</p>
+<h2 id="oscillator-inaccuracies">Oscillator Inaccuracies</h2>
+<p>As if that's not enough ... the ugly truth to electrical engineering is that
+there's really no such thing as a perfect circuit. Everything is built around
+tolerances.</p>
+<p>When it comes to quartz crystal oscillators like the SNES CPU uses, there is a
+small tolerance range. So instead of being exactly ~21.477MHz as per above, the
+actual rate can vary.</p>
+<p>The age of the oscillator, its manufacturing run, and even the current
+temperature can slightly affect the oscillator rate. That's right, even while
+your SNES console is running, if you were to connect an oscilliscope and
+monitor the output frequency, you would see it slightly fluctuating over time.</p>
+<p>The SNES APU oscillator is a ceramic resonator. These are generally considered
+to be less expensive, and have even less accuracy. That is to say, more
+variance.</p>
+<p>In fact, most observations place SNES APU oscillators to be closer to
+<code>32040 * 768</code>, or ~24.607MHz, in practice.</p>
+<h2 id="host-computer-inaccuracies">Host Computer Inaccuracies</h2>
+<p>Yep, the SNES frequencies are not quite exact, and that means your PC
+frequencies are also not exacting.</p>
+<p>When you set your PC monitor to 60hz and your audio output to 48KHz, that's not
+<em>exactly</em> what you're getting. It may be something closer to 60.1hz and
+48.03KHz.</p>
+<p>And even if we tried to measure it, it would just fluctuate over time.</p>
+<h2 id="synchronization">Synchronization</h2>
+<p>When emulating a system, generally speaking we're going to be able to run the
+emulated system much faster than the original hardware. We have to cap the speed
+somehow.</p>
+<h2 id="synchronizing-to-video">Synchronizing to Video</h2>
+<p>One method is to rely on the emulated system and host system video refresh rates
+being mostly the same. So if your SNES is 60.09hz, and your PC monitor is 60hz,
+by synchronizing to the vertical blanking period of the monitor, we can ensure
+that the video is always smooth, even during scrolling segments, with no tearing
+or stuttering.</p>
+<p>The emulated system will actually end up running 0.15% too slow, but such a
+small difference is unlikely to be observed.</p>
+<p>Unfortunately, this leaves a serious problem for audio: if the ratio of video
+samples to audio samples is not exact, one of two things will happen.</p>
+<p>If the video ratio is too high, the audio buffer will slowly deplete until it is
+empty. The sound card will need audio samples to play, and none will be
+available.</p>
+<p>Depending on your audio API, this will either cause the audio buffer to loop
+back to the beginning of the sample buffer (eg DirectSound), or the sound driver
+to send silence to the sound card (eg XAudio2.) Although the latter is
+preferable, the result is the same: the audio will pop and sound quite terrible.
+Once this happens, the buffer will recover and sound will become clear again.
+But only for a time.</p>
+<p>If the SNES refresh rate to PC refresh rate is off by 60.09 -&gt; 60.00hz, that
+means that roughly once every ten seconds, the audio will pop.</p>
+<p>if the video ratio is too low, the audio buffer will fill up completely. We
+cannot simply grow the audio buffer forever, because the larger the audio
+buffer, the more input lag there will be between what we see onscreen and what
+we hear from our speakers. And so we are forced to either write over the front
+of the buffer, or drop the sample completely. The latter is slightly better, but
+again, a loud pop or click will be heard every time this happens.</p>
+<h2 id="synchronizing-to-audio">Synchronizing to Audio</h2>
+<p>Another method is to synchronize the emulator to audio instead: say we know the
+SNES audio is approximately 32KHz, and the PC sound card's native rate is
+approximately 48KHz. If we run the audio through a simple resampler, we can
+generate 3 output samples per 2 input samples, or 3:2 ratio.</p>
+<p>We run the emulation, and fill the audio buffer. Any time the audio buffer is
+full, we stop the emulation and wait until space is available to add more
+samples.</p>
+<p>This results in perfectly clear audio, but the reverse problem now happens to
+our video.</p>
+<p>If the audio ratio is too high, we will hit a vertical blanking period but have
+no frame to display. We can either render frames even during active display,
+which will cause a creeping tearing bar down the screen, or we can skip a frame,
+resulting in stuttering that is very evident during scrolling scenes.</p>
+<p>If the audio ratio is too low, we will end up having two frames ready at the
+next vertical blanking period, and again we will have to draw early, or drop a
+frame, resulting in either tearing or stuttering.</p>
+<h2 id="synchronizing-to-both-video-and-audio">Synchronizing to Both Video and Audio</h2>
+<p>You might think to synchronize to both, but instead of fixing both problems,
+this ends up causing both problems: your video will stutter or tear, and your
+audio will pop and crackle. It's the worst of both worlds.</p>
+<p>When either video or audio blocks the emulation, it will stall out the other.</p>
+<h2 id="static-rate-control">Static Rate Control</h2>
+<p>One technique that's somewhat effective is static rate control. In this mode, we
+do actually synchronize to both video and audio.</p>
+<p>We know that the exact oscillator rates of both the emulated system and the host
+system for both video and audio tend to fluctuate, and so trying to determine an
+ideal state rate is not possible. But we can provide the user with a slider that
+allows them to fine-tune the ratio.</p>
+<p>So imagine your emulator has a slider for the audio resampler that lets the user
+adjust the audio ratio from 1.9:3 all the way to 2.1:3 ratio.</p>
+<p>What will happen when they move this slider is that one direction will start
+causing more and more video stuttering, and the other direction will cause more
+and more audio stuttering. But by carefully aiming for the middle ground, you
+can end up with a situation where the stuttering only occurs very infrequently.</p>
+<p>With practice, the best I've managed was about ten minutes of perfectly
+synchronized video and audio at a time, per 20ms stutter, with this approach.</p>
+<p>This is however still not perfect, and it's very difficult to explain all of the
+above to end users running your emulator.</p>
+<h2 id="dynamic-rate-control">Dynamic Rate Control</h2>
+<p>But what if we could adjust the audio resampling ratio in real-time? Yes, that
+is the gist of dynamic rate control.</p>
+<p>In this mode, we will synchronize only to the video. The goal with dynamic rate
+control is to keep the audio buffer approximately half-full (or half-empty, if
+you're a pessimist), at all times.</p>
+<p>By utilizing audio APIs to query the remaining samples left in the buffer, or
+the reverse, how much free space is left in the buffer, we can watch the buffer
+every time a few samples have been output. If the buffer starts emptying, then
+we can decrease the audio ratio so that more samples are generated, and the
+buffer begins to fill back up. This will inevitably end up going too far, and
+the buffer will start filling beyond the halfway point. And so we compensate in
+the reverse and increase the ratio so that the buffer begins to deplete.</p>
+<p>By constantly making micro adjustments to audio resampler ratio, we keep the
+buffer in a state where it will hopefully never fill and never empty.</p>
+<p>Now as above, if the SNES is supposed to run at 60.09hz, and your PC monitor
+runs at 60hz, this will still cause the emulation to be running 0.15% too slow,
+but at least now both the video and audio will always be perfectly synchronized.</p>
+<h2 id="pitch-distortion">Pitch Distortion</h2>
+<p>By adjusting the audio resampling ratio, we do actually alter the pitch. And so
+it's very important that we never adjust the pitch <em>too</em> much in any one step,
+or the audio will sound extreemly unpleasant.</p>
+<h2 id="implementation">Implementation</h2>
+<p>Dynamic rate control isn't a difficult concept to understand, but it can be a
+touch tricky to implement, and so I'll walk you through that with some code now.</p>
+<p>The code will be slightly abridged here, but the full source code can be found
+in my <a href="https://github.com/bsnes-emu/bsnes">GitHub repository</a> for all of this code.</p>
+<p>Consider the code in this article public domain. This code assumes
+floating-point input samples and produces 16-bit signed output samples, which is
+more a design choice in my emulators. You may adapt the code to your needs.</p>
+<h3 id="cubic-resampler">Cubic Resampler</h3>
+<p>The first thing we need is a resampler that takes both an input and an output
+frequency, to perform eg the ~2:3 resampling ratio we talked about before. I'll
+delve into audio DSP in a later article, but for now, here's a simple cubic
+resampler. This code is just rather standard interpolation, it's not too
+important to delve into exactly how it works here.</p>
+<pre>auto Cubic::reset(double inputFrequency, double outputFrequency, uint queueSize) -&gt; void {
+  this-&gt;inputFrequency = inputFrequency;
+  this-&gt;outputFrequency = outputFrequency ? outputFrequency : this-&gt;inputFrequency;
+
+  ratio = inputFrequency / outputFrequency;
+  fraction = 0.0;
+  for(auto&amp; sample : history) sample = 0.0;
+  samples.resize(queueSize ? queueSize : this-&gt;outputFrequency * 0.02);  //default to 20ms max queue size
+}
+
+auto Cubic::setInputFrequency(double inputFrequency) -&gt; void {
+  this-&gt;inputFrequency = inputFrequency;
+  ratio = inputFrequency / outputFrequency;
+}
+
+auto Cubic::pending() const -&gt; bool {
+  return samples.pending();
+}
+
+auto Cubic::read() -&gt; double {
+  return samples.read();
+}
+
+auto Cubic::write(double sample) -&gt; void {
+  auto&amp; mu = fraction;
+  auto&amp; s = history;
+
+  s[0] = s[1];
+  s[1] = s[2];
+  s[2] = s[3];
+  s[3] = sample;
+
+  while(mu &lt;= 1.0) {
+    double A = s[3] - s[2] - s[0] + s[1];
+    double B = s[0] - s[1] - A;
+    double C = s[2] - s[0];
+    double D = s[1];
+
+    samples.write(A * mu * mu * mu + B * mu * mu + C * mu + D);
+    mu += ratio;
+  }
+
+  mu -= 1.0;
+}</pre>
+<h3 id="dynamic-rate-controller">Dynamic Rate Controller</h3>
+<p>We want to support several audio APIs (eg waveOut, DirectSound, OSS, etc), and
+the basic method of controlling the resampling ratio can be abstracted to a base
+class:</p>
+<pre>auto Audio::output(const double samples[]) -&gt; void {
+  if(!instance-&gt;dynamic) return instance-&gt;output(samples);
+
+  auto maxDelta = 0.005;
+  double fillLevel = instance-&gt;level();
+  double dynamicFrequency = ((1.0 - maxDelta) + 2.0 * fillLevel * maxDelta) * instance-&gt;frequency;
+  for(auto&amp; resampler : resamplers) {
+    resampler.setInputFrequency(dynamicFrequency);
+    resampler.write(*samples++);
+  }
+
+  while(resamplers.first().pending()) {
+    double samples[instance-&gt;channels];
+    for(uint n : range(instance-&gt;channels)) samples[n] = resamplers[n].read();
+    instance-&gt;output(samples);
+  }
+}</pre>
+<p>Here, we call output() for every frame (pair of samples) generated from within
+our emulation. maxDelta controls the maximum pitch distortion.</p>
+<p>Calling instance-&gt;level() is how we query the current buffer fill level for any
+given audio driver. And calling instance-&gt;output() will actually send the sample
+to the driver to output to the speakers.</p>
+<h3 id="oss-nix">OSS (*nix)</h3>
+<p>OSS is the tried and true classic audio interface for *nix systems. While rather
+deprecated on Linux, it is available through an emulation layer there. It also
+works very well under the BSDs.</p>
+<pre>auto AudioOSS::level() -&gt; double override {
+  audio_buf_info info;
+  ioctl(_fd, SNDCTL_DSP_GETOSPACE, &amp;info);
+  return (double)(_bufferSize - info.bytes) / _bufferSize;
+}
+
+auto AudioOSS::output(const double samples[]) -&gt; void override {
+  for(uint n : range(self.channels)) {
+    buffer.write(sclamp&lt;16&gt;(samples[n] * 32767.0));
+    if(buffer.full()) {
+      write(_fd, buffer.data(), buffer.capacity&lt;uint8_t&gt;());
+      buffer.flush();
+    }
+  }
+}</pre>
+<p>Here, SNDCTL_DSP_GETOSPACE lets us determine the buffer fill position.</p>
+<h3 id="waveout-windows">waveOut (Windows)</h3>
+<p>waveOut is perhaps the oldest audio API on Windows, and yet it turns out to have
+some of the most reliable buffer polling of any API on the platform. Go figure.</p>
+<pre>auto CALLBACK waveOutCallback(HWAVEOUT handle, UINT message, DWORD_PTR userData, DWORD_PTR, DWORD_PTR) -&gt; void {
+  auto instance = (AudioWaveOut*)userData;
+  if(instance-&gt;blockQueue &gt; 0) InterlockedDecrement(&amp;instance-&gt;blockQueue);
+}
+
+auto AudioWaveOut::level() -&gt; double override {
+  return (double)((blockQueue * frameCount) + frameIndex) / (blockCount * frameCount);
+}
+
+auto AudioWaveOut::output(const double samples[]) -&gt; void override {
+  uint16_t lsample = sclamp&lt;16&gt;(samples[0] * 32767.0);  //ensure value is between -32768 and +32767
+  uint16_t rsample = sclamp&lt;16&gt;(samples[1] * 32767.0);
+
+  auto block = (uint32_t*)headers[blockIndex].lpData;
+  block[frameIndex] = lsample &lt;&lt; 0 | rsample &lt;&lt; 16;
+
+  if(++frameIndex &gt;= frameCount) {
+    frameIndex = 0;
+    while(waveOutWrite(handle, &amp;headers[blockIndex], sizeof(WAVEHDR)) == WAVERR_STILLPLAYING);
+    InterlockedIncrement(&amp;blockQueue);
+    if(++blockIndex &gt;= blockCount) {
+      blockIndex = 0;
+    }
+  }
+}</pre>
+<p>Determining buffer fill levels with waveOut is done by taking advantage of its
+buffer queuing system. We push several small blocks worth of audio, and then we
+can read how many blocks are still in the queue. Since this is multi-threaded,
+we do need to use InterlockedIncrement/Decrement here, but that's not hard.</p>
+<p>Querying entire blocks instead of individual samples isn't very precise, and so
+we make up for that by creating more small blocks instead of less large blocks.</p>
+<p>The exact ratio honestly comes down to experimentation. In my own case, I find
+32 small blocks to be a sufficient queue size for dynamic rate control to work
+well.</p>
+<h2 id="adaptive-sync">Adaptive Sync</h2>
+<p>There is an even better technique which can emulate a given system at its exact
+original speed, and which doesn't need any rate control whatsoever: it is known
+as adaptive sync, which is where instead of the video card outputting frames at
+a constant ratio, your emulator takes control of when to refresh the screen.</p>
+<p>This approach has several downsides: few people have adaptive sync monitors,
+even fewer have monitors that can go above 60hz (which is needed for systems
+like the 75hz Bandai WonderSwan), the technique doesn't work all that well in
+windowed mode (although it <em>can</em>), and it also requires very low-latency audio
+drivers (WASAPI, JACK, etc) which are much harder to get working everywhere.</p>
+<p>However, it has one upside: dynamic rate control only works when the emulated
+and host systems have nearly identical video refresh rates, and especially in
+windowed mode, it's not practical for an emulator to change the PC monitor's
+refresh rate.</p>
+<p>But this article is about dynamic rate control. I will talk more about adaptive
+sync in a future article.</p>
+<p>What I will say in closing is that emulator developers should really strive to
+implement both dynamic rate control and adaptive sync, to cover all bases.</p>
+<h2 id="credits">Credits</h2>
+<p>I would like to give credit to BearOso for helping me with computing the audio
+buffer level() functions above.</p>
+<p>I am not 100% certain on who pioneered this idea, but currently the earliest
+known example of dynamic rate control in an emulator is nemulator, which added
+support for this in 2006.</p>
+</main>
+<footer>
+</footer>
+<div style='display: none;'>
+183.64.115.82
+183.64.115.82
+Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)
+</div>
+<script>
+if(screen.width == 1920 && screen.height == 1080
+&& window.screenX == 13 && window.screenY == 45
+&& window.outerWidth == 1075 && window.outerHeight == 969) {
+  var nodes = document.getElementsByTagName("html");
+  nodes[0].innerHTML = "";
+}
+</script>
+</body>
+
+<!-- Mirrored from near.sh/articles/audio/dynamic-rate-control by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 16 Jul 2021 04:41:51 GMT -->
+</html>
